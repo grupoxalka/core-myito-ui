@@ -1,0 +1,41 @@
+<main class="blank-center-container">
+    <div class="blank-center"></div>
+</main>
+
+<style>
+    * {
+        box-sizing: border-box;
+        margin: 0;
+    }
+
+    .blank-center-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+    }
+
+    .blank-center {
+        box-sizing: content-box;
+        width: 358px;
+        max-width: 358px;
+        height: 530px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        gap: 10px;
+        padding: 0 16px;
+        border-radius: 6px;
+        box-shadow: 0 6px 14px 10px rgba(14, 49, 93, 0.15);
+    }
+
+    @media(width > 1024px) {
+        .blank-center {
+            padding: 0 75px;
+            width: 510px;
+            height: 658px;
+        }
+    }
+</style>

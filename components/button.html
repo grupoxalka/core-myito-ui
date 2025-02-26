@@ -7,18 +7,31 @@
 </head>
 
 <body>
-    <div class="container-button">
-        <input type="button" value="Solicitar" id="button">
-    </div>
+    <input type="button" value="Solicitar" id="button" class="button">
     <style>
-        input[type="button"] {
-            border: 0;
+        .button:hover {
+            background-color: #007AFF;
+            color: #EDFAFF;
+        }
+
+        .button:active {
+            background-color: #0E315D;
+        }
+
+        .button:disabled {
+            background-color: #B5EAFF;
+            color: #8789A9;
+        }
+
+        .button {
+            border: none;
             width: 360px;
             height: 36px;
             background-color: #0D519B;
             color: #ffffff;
             padding: 8px 16px;
             border-radius: 6px;
+            cursor: pointer;
         }
     </style>
 </body>

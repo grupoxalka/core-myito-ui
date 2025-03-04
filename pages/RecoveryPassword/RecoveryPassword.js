@@ -17,5 +17,6 @@ button.addEventListener('click', () => {
         button.value = 'Volver al inicio de sesión';
         canReturn = true;
     }
+
 });
 

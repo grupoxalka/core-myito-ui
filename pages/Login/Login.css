@@ -92,20 +92,14 @@ h1 {
     align-items: center;
     justify-content: center;
     width: 100%;
+    height: 100vh;
     box-sizing: content-box;
     z-index: 1;
-
     padding-left: 15.5px;
     padding-right: 14.5px;
     background-color: white;
     box-shadow: 0px 6px 14px 10px rgba(14, 49, 93, 0.15);
-}
-
-.right-side-container {
-    display: flex;
-    flex-direction: column;
-    max-width: 360px;
-    gap: 32px
+    gap: 32px;
 }
 
 @media(width >=830px) {
@@ -122,7 +116,6 @@ h1 {
         justify-content: center;
         overflow: hidden;
         position: relative;
-
     }
 }
 
@@ -139,19 +132,22 @@ h1 {
     .left-side img {
         bottom: -316px;
     }
+
+    input,
+    .lines {
+        max-width: 360px;
+    }
 }
 
 /*----------upper item------- */
 .upper-item {
     margin: 0 auto;
-    width: 360px;
     text-align: center;
 }
 
 #tecnm-logo {
     width: 64px;
     height: 64px;
-    margin-bottom: 32px;
 }
 
 .upper-item-title {
@@ -172,6 +168,7 @@ a {
 
 .lower-item {
     width: 100%;
+    max-width: 360px;
     text-align: center;
 }
 
@@ -215,6 +212,7 @@ input::placeholder {
 
 .input-container {
     width: 100%;
+    max-width: 360px;
     display: flex;
     flex-direction: column;
     gap: 16px;

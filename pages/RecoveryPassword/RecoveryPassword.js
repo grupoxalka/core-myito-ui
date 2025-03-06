@@ -7,7 +7,7 @@ let canReturn = false;
 
 button.addEventListener('click', () => {
     if (canReturn) {
-        window.location.href = '../Login/login.html';
+        window.location.href = '../login/login.html';
     }
     if (email.value !== '') {
         tittle.textContent = 'Solicitud enviada con éxito';

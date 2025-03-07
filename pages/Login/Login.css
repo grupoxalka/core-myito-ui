@@ -1,0 +1,213 @@
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    overflow: hidden;
+}
+
+.login-background {
+    background-image: url(../../assets/BG.svg);
+    background-position: center;
+    background-size: cover;
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+}
+
+/* ------- Button -------- */
+.button:hover {
+    background-color: #007aff;
+    color: #edfaff;
+}
+
+.button:active {
+    background-color: #0e315d;
+}
+
+.button:disabled {
+    background-color: #b5eaff;
+    color: #8789a9;
+}
+
+.button {
+    border: none;
+    width: 100%;
+    height: 36px;
+    background-color: #0d519b;
+    color: #ffffff;
+    padding: 8px 16px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 15px;
+}
+
+/* Left-Side-Bar */
+.left-side {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    position: relative;
+}
+
+.upper-text {
+    text-align: center;
+    padding-top: 113px;
+    position: absolute;
+    height: 80%;
+}
+
+.left-side img {
+    flex-shrink: 0;
+    position: relative;
+    bottom: -260px;
+}
+
+h1 {
+    font-size: 32px;
+    line-height: 20px;
+    letter-spacing: -0.2px;
+}
+
+.upper-text h1 {
+    color: #0E315D;
+    letter-spacing: -0.16px;
+}
+
+.upper-text p {
+    font-size: 16px;
+    font-weight: 300;
+    letter-spacing: -0.07px;
+    margin: 15px 0 0;
+    padding: 0 2rem;
+}
+
+/* ------ Right Side ------ */
+.right-side {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-width: 360px;
+    height: 100vh;
+    box-sizing: content-box;
+    z-index: 1;
+    padding-left: 76.5px;
+    padding-right: 74.5px;
+    background-color: white;
+    box-shadow: 0px 6px 14px 10px rgba(14, 49, 93, 0.15);
+    gap: 32px;
+}
+
+@media(width <1024px) {
+    .upper-text h1 {
+        line-height: 40px;
+    }
+
+    .upper-text p {
+        font-size: 14px;
+        font-weight: 400;
+    }
+
+    .left-side img {
+        bottom: -316px;
+    }
+
+    input,
+    .lines {
+        max-width: 360px;
+    }
+
+    .left-side {
+        height: 100vh;
+        display: none;
+    }
+
+    .right-side {
+        width: 100%;
+        padding-left: 15.5px;
+        padding-right: 14.5px;
+    }
+}
+
+/*----------upper item------- */
+#tecnm-logo {
+    width: 64px;
+    height: 64px;
+}
+
+.upper-item-title {
+    font-family: 'Poppins', sans-serif;
+    font-size: 28px;
+    line-height: 32px;
+    letter-spacing: -0.7px;
+    color: #303040;
+    margin: 0;
+}
+
+/* ----lower item---- */
+a {
+    font-size: 12px;
+    color: #085dc5;
+    text-decoration: none;
+}
+
+.lower-item {
+    width: 100%;
+    max-width: 360px;
+    text-align: center;
+}
+
+.lower-item span {
+    font-size: 13px;
+    z-index: 1;
+    padding: 0 8px;
+    background-color: white;
+    position: relative;
+}
+
+.lines {
+    position: relative;
+}
+
+.lines::after {
+    content: "";
+    background-color: #b1b2c8;
+    position: absolute;
+    width: 100%;
+    left: 0;
+    top: 50%;
+    height: 2px;
+}
+
+input {
+    width: 100%;
+    height: 36px;
+    border: 1px solid #b5eaff80;
+    background-color: #edfaff;
+    color: #0e315d;
+    border-radius: 6px;
+    padding: 8px 12px;
+    text-align: center;
+    font-size: 15px;
+}
+
+input::placeholder {
+    color: #0e315d;
+}
+
+.input-container {
+    width: 100%;
+    max-width: 360px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}

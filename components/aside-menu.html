@@ -1,0 +1,204 @@
+<header>
+    <button class="menu-button">
+        <img src="../assets/menu.svg" alt="menu" width="24" height="24">
+    </button>
+    Tecnologico Nacional de Mexico
+    <button class="cancel-button">
+        <img src="../assets/cancel.svg" alt="x">
+    </button>
+</header>
+
+<aside class="aside-menu">
+    <ul>
+        <li class="active">
+            <a href="#">
+                <div class="icon-bg">
+                    <img src="../assets/dashboard.svg" alt="dashboard">
+                </div>
+                <span>Tablero</span>
+            </a>
+        </li>
+        <li>
+            <a href="#">
+                <div class="icon-bg">
+                    <img src="../assets/user.svg" alt="user">
+                </div>
+                <span>Gestor de usuarios</span>
+            </a>
+        </li>
+        <li>
+            <a href="#">
+                <div class="icon-bg">
+                    <img src="../assets/notification.svg" alt="notification">
+                </div>
+                <span>Anuncios</span>
+            </a>
+        </li>
+        <li>
+            <a href="#">
+                <div class="icon-bg">
+                    <img src="../assets/data.svg" alt="data">
+                </div>
+                <span>Gestor de reportes</span>
+            </a>
+        </li>
+
+    </ul>
+
+    <div class="exit">
+        <a href="#">
+            <img src="../assets/exit.svg" alt="exit">
+            <span>Cerrar sesion</span>
+        </a>
+    </div>
+</aside>
+
+<style>
+    @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap");
+
+    * {
+        box-sizing: border-box;
+        margin: 0;
+    }
+
+    body {
+        font-family: "Poppins", sans-serif;
+        display: flex;
+        flex-direction: column;
+        overflow: hidden;
+        height: 100vh;
+    }
+
+    header {
+        background-color: black;
+        color: white;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 9px 0;
+
+        button {
+            background-color: transparent;
+            border: none;
+            color: white;
+            padding: 0 12px;
+            cursor: pointer;
+        }
+    }
+
+    .aside-menu.isOpen {
+        transform: translateX(0);
+        transition: transform 0.3s;
+    }
+
+    .aside-menu {
+        flex: 1;
+        padding: 22px 0;
+        background-color: white;
+        height: 100vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        transform: translateX(-100%);
+        transition: transform 0.3s;
+
+        ul {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            list-style: none;
+            padding: 0;
+        }
+
+        a {
+            color: #000;
+            text-decoration: none;
+            text-transform: uppercase;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            padding: 8px 16px;
+            gap: 10px;
+        }
+
+        .icon-bg {
+            background-color: #f4f6f7;
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+        }
+    }
+
+    .aside-menu li.active {
+        border-left: 2px solid #0E315D;
+
+        img {
+            filter: brightness(0) saturate(100%) invert(18%) sepia(98%) saturate(2171%) hue-rotate(200deg) brightness(88%) contrast(90%);
+        }
+
+        .icon-bg {
+            filter: drop-shadow(0px 0px 10px var(--Azure-Radiance-800, #085DC5));
+        }
+    }
+
+    @media(width > 1024px) {
+        header {
+            justify-content: center;
+        }
+
+        .menu-button,
+        .cancel-button {
+            display: none;
+        }
+
+        .aside-menu {
+            width: 55px;
+            transform: translateX(0);
+
+            span {
+                display: none;
+            }
+
+            a {
+                padding: 8px 11px;
+            }
+        }
+    }
+</style>
+
+<script>
+    const asideMenu = document.querySelector(".aside-menu");
+    const menuButton = document.querySelector(".menu-button");
+    const cancelButton = document.querySelector(".cancel-button");
+    const asideMenuItems = document.querySelectorAll(".aside-menu li");
+
+    disableButton(cancelButton);
+
+    menuButton.addEventListener("click", () => {
+        asideMenu.classList.add("isOpen");
+        enableButton(cancelButton);
+        disableButton(menuButton);
+    });
+
+    cancelButton.addEventListener("click", () => {
+        asideMenu.classList.remove("isOpen");
+        enableButton(menuButton);
+        disableButton(cancelButton);
+    });
+
+    asideMenuItems.forEach((item) => {
+        item.addEventListener("click", () => {
+            asideMenuItems.forEach((item) => item.classList.remove("active"));
+            item.classList.add("active");
+        });
+    });
+
+    function enableButton(button) {
+        button.style.opacity = 1;
+        button.style.cursor = "pointer";
+    }
+    function disableButton(button) {
+        button.style.opacity = 0;
+        button.style.cursor = "default";
+    }
+</script>

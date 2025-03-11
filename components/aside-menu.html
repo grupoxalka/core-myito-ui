@@ -16,7 +16,7 @@
             <img src="../assets/cancel.svg" alt="x" width="24" height="24">
         </button>
     </header>
-    <main>
+    <div class="aside-menu-content">
         <ul>
             <li class="tooltip active" data-tooltip="Tablero">
                 <a href="#">
@@ -50,7 +50,6 @@
                     <span>Gestor de reportes</span>
                 </a>
             </li>
-
         </ul>
         <div class="tooltip exit" data-tooltip="Cerrar Sesión">
             <a href="#">
@@ -58,7 +57,7 @@
                 <span>Cerrar sesion</span>
             </a>
         </div>
-    </main>
+    </div>
 </aside>
 
 <style>
@@ -135,14 +134,13 @@
     .aside-menu {
         background-color: white;
         position: fixed;
-        bottom: 0;
         top: 0;
         width: 100%;
         text-transform: uppercase;
         transform: translateX(-100%);
         transition: transform 0.3s;
 
-        main {
+        .aside-menu-content {
             height: calc(100vh - 58px);
             padding: 22px 0;
             display: flex;
@@ -255,7 +253,6 @@
     .tooltip:hover::after {
         opacity: 1;
         visibility: visible;
-
     }
 </style>
 

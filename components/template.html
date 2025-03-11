@@ -1,7 +1,18 @@
 <div class="template-background"></div>
-<title>Header - Tecnologico Nacional de Mexico </title>
-<style>
 
+<body>
+    <div class="template-background">
+        <header class="header">
+            <div class="circulo">
+                <img src="../assets/tecnm-logo.svg" id="logo">
+            </div>
+            TECNOLÓGICO <br> NACIONAL DE MÉXICO
+        </header>
+        <div class="container"></div>
+        <div class="coontainer"></div>
+</body>
+
+<style>
     * {
         box-sizing: border-box;
         margin: 0;
@@ -16,30 +27,28 @@
         width: 100vw;
         position: absolute;
         z-index: -1;
-       
-        
-        
-
     }
+
     .header {
         display: flex;
         align-items: center;
         background-color: rgba(34, 38, 42, 1);
-        color: rgba(237, 250, 255, 1); 
-            text-align:inherit;
-            width: 100%;
-            height: 58px; 
-            font-family: 'Poppins', sans-serif; 
-            font-size: 14px; 
-            font-weight: bold;
-            padding: 9px 12px;
-        
+        color: rgba(237, 250, 255, 1);
+        text-align: inherit;
+        width: 100%;
+        height: 58px;
+        font-family: 'Poppins', sans-serif;
+        font-size: 14px;
+        font-weight: bold;
+        padding: 9px 12px;
+
     }
 
     #logo {
         width: 40px;
         height: 40px;
     }
+
     .circulo {
         height: 40px;
         width: 40px;
@@ -48,39 +57,25 @@
         margin-right: 20px;
 
     }
-    .container, .coontainer {
-            display: flex;
-            flex-wrap: wrap;
-            width: 90%;
-            height: 194px;
-            max-width: 1289px;
-            border-radius: 4px;
-            background-color: rgba(255, 255, 255, 1);
-            position: relative;
-            top: 100px;
-            margin: 0 auto; 
-            box-shadow: 0 2px 6px 2px rgba(83, 94, 103, 0.35);
-            display: flex;    
-        }
 
-        .coontainer {
+    .container,
+    .coontainer {
+        display: flex;
+        flex-wrap: wrap;
+        width: 90%;
+        height: 194px;
+        max-width: 1289px;
+        border-radius: 4px;
+        background-color: rgba(255, 255, 255, 1);
+        position: relative;
+        top: 100px;
+        margin: 0 auto;
+        box-shadow: 0 2px 6px 2px rgba(83, 94, 103, 0.35);
+        display: flex;
+    }
 
-            top: 200px;
-        }
-       
-   
-    </style>
-</head>
-<body>
-    <div class="template-background">
-    <header class="header">
-        <div class="circulo">
-            <img src="../assets/tecnm-logo.svg" id="logo">
-        </div>
+    .coontainer {
 
-        TECNOLÓGICO <br> NACIONAL DE MÉXICO
-        
-    </header>
-    <div class="container"></div>
-    <div class="coontainer"></div>
-</body>
+        top: 200px;
+    }
+</style>

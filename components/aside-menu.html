@@ -1,56 +1,64 @@
-<header>
+<header class="temp-header">
     <button class="menu-button">
         <img src="../assets/menu.svg" alt="menu" width="24" height="24">
     </button>
     Tecnologico Nacional de Mexico
-    <button class="cancel-button">
-        <img src="../assets/cancel.svg" alt="x">
-    </button>
 </header>
 
 <aside class="aside-menu">
-    <ul>
-        <li class="active">
-            <a href="#">
-                <div class="icon-bg">
-                    <img src="../assets/dashboard.svg" alt="dashboard">
-                </div>
-                <span>Tablero</span>
-            </a>
-        </li>
-        <li>
-            <a href="#">
-                <div class="icon-bg">
-                    <img src="../assets/user.svg" alt="user">
-                </div>
-                <span>Gestor de usuarios</span>
-            </a>
-        </li>
-        <li>
-            <a href="#">
-                <div class="icon-bg">
-                    <img src="../assets/notification.svg" alt="notification">
-                </div>
-                <span>Anuncios</span>
-            </a>
-        </li>
-        <li>
-            <a href="#">
-                <div class="icon-bg">
-                    <img src="../assets/data.svg" alt="data">
-                </div>
-                <span>Gestor de reportes</span>
-            </a>
-        </li>
+    <header class="aside-menu-header">
+        <div>
+            <img src="../assets/logo.svg" alt="logo" class="aside-menu-logo">
+            <h1>Tecnologico Nacional de Mexico</h1>
+        </div>
 
-    </ul>
+        <button class="cancel-button">
+            <img src="../assets/cancel.svg" alt="x" width="24" height="24">
+        </button>
+    </header>
+    <main>
+        <ul>
+            <li class="tooltip active" data-tooltip="Tablero">
+                <a href="#">
+                    <div class="icon-bg">
+                        <img src="../assets/dashboard.svg" alt="dashboard">
+                    </div>
+                    <span>Tablero</span>
+                </a>
+            </li>
+            <li class="tooltip" data-tooltip="Gestión de Usuarios">
+                <a href="#">
+                    <div class="icon-bg">
+                        <img src="../assets/user.svg" alt="user">
+                    </div>
+                    <span>Gestor de usuarios</span>
+                </a>
+            </li>
+            <li class="tooltip" data-tooltip="Anuncios">
+                <a href="#">
+                    <div class="icon-bg">
+                        <img src="../assets/notification.svg" alt="notification">
+                    </div>
+                    <span>Anuncios</span>
+                </a>
+            </li>
+            <li class="tooltip" data-tooltip="Reportes">
+                <a href="#">
+                    <div class="icon-bg">
+                        <img src="../assets/data.svg" alt="data">
+                    </div>
+                    <span>Gestor de reportes</span>
+                </a>
+            </li>
 
-    <div class="exit">
-        <a href="#">
-            <img src="../assets/exit.svg" alt="exit">
-            <span>Cerrar sesion</span>
-        </a>
-    </div>
+        </ul>
+        <div class="tooltip exit" data-tooltip="Cerrar Sesión">
+            <a href="#">
+                <img src="../assets/exit.svg" alt="exit">
+                <span>Cerrar sesion</span>
+            </a>
+        </div>
+    </main>
 </aside>
 
 <style>
@@ -63,27 +71,60 @@
 
     body {
         font-family: "Poppins", sans-serif;
-        display: flex;
         flex-direction: column;
-        overflow: hidden;
-        height: 100vh;
+        background-color: blue;
     }
 
-    header {
+    .temp-header {
         background-color: black;
         color: white;
         display: flex;
         justify-content: space-between;
         align-items: center;
         padding: 9px 0;
+        height: 58px;
+        width: 100%;
+    }
 
-        button {
-            background-color: transparent;
-            border: none;
-            color: white;
-            padding: 0 12px;
-            cursor: pointer;
+    /* ---Aside Menu--- */
+    .aside-menu-header {
+        background-color: #22262A;
+        color: white;
+        display: flex;
+        height: 58px;
+        padding: 9px 12px;
+        justify-content: center;
+        align-items: center;
+        position: relative;
+
+        .aside-menu-logo {
+            background-color: #F4F6F7;
+            border-radius: 50%;
         }
+
+        h1 {
+            font-size: 14px;
+        }
+
+        div {
+            display: flex;
+            align-items: center;
+            gap: 24px;
+            width: 220px;
+        }
+
+        .cancel-button {
+            position: absolute;
+            right: 12px;
+            padding: 0;
+        }
+    }
+
+    .cancel-button,
+    .menu-button {
+        background-color: transparent;
+        border: none;
+        cursor: pointer;
     }
 
     .aside-menu.isOpen {
@@ -92,15 +133,22 @@
     }
 
     .aside-menu {
-        flex: 1;
-        padding: 22px 0;
         background-color: white;
-        height: 100vh;
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
+        position: fixed;
+        bottom: 0;
+        top: 0;
+        width: 100%;
+        text-transform: uppercase;
         transform: translateX(-100%);
         transition: transform 0.3s;
+
+        main {
+            height: calc(100vh - 58px);
+            padding: 22px 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
 
         ul {
             display: flex;
@@ -113,7 +161,7 @@
         a {
             color: #000;
             text-decoration: none;
-            text-transform: uppercase;
+
             font-weight: 500;
             display: flex;
             align-items: center;
@@ -130,7 +178,7 @@
     }
 
     .aside-menu li.active {
-        border-left: 2px solid #0E315D;
+        position: relative;
 
         img {
             filter: brightness(0) saturate(100%) invert(18%) sepia(98%) saturate(2171%) hue-rotate(200deg) brightness(88%) contrast(90%);
@@ -139,6 +187,16 @@
         .icon-bg {
             filter: drop-shadow(0px 0px 10px var(--Azure-Radiance-800, #085DC5));
         }
+    }
+
+    .aside-menu li.active::before {
+        content: "";
+        position: absolute;
+        width: 2px;
+        top: 0;
+        bottom: 0;
+        background-color: #0E315D;
+        left: 0;
     }
 
     @media(width > 1024px) {
@@ -153,6 +211,7 @@
 
         .aside-menu {
             width: 55px;
+            top: 58px;
             transform: translateX(0);
 
             span {
@@ -163,6 +222,40 @@
                 padding: 8px 11px;
             }
         }
+
+        .aside-menu-header {
+            display: none;
+        }
+    }
+
+    /* ---Tooltip--- */
+    .tooltip {
+        position: relative;
+        display: inline-flex;
+        align-items: center;
+    }
+
+    .tooltip::after {
+        content: attr(data-tooltip);
+        position: absolute;
+        background-color: white;
+        color: #085DC5;
+        border-radius: 8px;
+        box-shadow: 0px 1px 6px 0px #A7B2B9;
+        font-weight: 600;
+        padding: 4px 12px;
+        white-space: nowrap;
+        left: 100%;
+        transform: translateX(10px);
+        visibility: hidden;
+        opacity: 0;
+        transition: opacity 0.3s;
+    }
+
+    .tooltip:hover::after {
+        opacity: 1;
+        visibility: visible;
+
     }
 </style>
 

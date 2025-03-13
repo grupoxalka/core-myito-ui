@@ -1,15 +1,23 @@
 <div class="template-background"></div>
 
 <body>
-    <div class="template-background">
-        <header class="header">
-            <div class="circle">
-                <img src="../assets/tecnm-logo.svg" id="logo">
-            </div>
-            TECNOLÓGICO <br> NACIONAL DE MÉXICO
-        </header>
-        <div class="container"></div>
-        <div class="coontainer"></div>
+
+    <header class="header">
+        <div class="circle">
+            <img src="../assets/tecnm-logo.svg" id="logo">
+            TECNOLÓGICO NACIONAL DE MÉXICO
+        </div>
+
+    </header>
+    <div class="users"></div>
+    <h1>USUARIOS EN EL SISTEMA </h1>
+    <p>POR SEMESTRE</p>
+    <div class="containerusers"></div>
+    <div class="users"></div>
+    <h1>HERRAMIENTAS RÁPIDAS</h1>
+    <p>ULTIMAS HERRAMIENTAS UTILIZADAS</p>
+    <div class="coontainertools"></div>
+    
 </body>
 
 <style>
@@ -18,7 +26,30 @@
         margin: 0;
     }
 
+    .users {
+        display: flex;
+        width: 100%;
+        align-self: stretch;
+        padding: 40px;
+    }
+
+    h1 {
+        
+        font-family: 'Poppins', sans-serif;
+        font-size: 24px;
+        font-style: normal;
+        padding-left:70px;
+    }
+
+    p {
+
+        font-family: 'Roboto', sans-serif;
+        font-size: 14px;
+        padding-left:70px;
+    }
+
     .template-background {
+        display: flex;
         background-image: url(../assets/template-vector.svg);
         background-position: center;
         background-size: cover;
@@ -32,6 +63,7 @@
     .header {
         display: flex;
         align-items: center;
+        justify-content: space-between;
         background-color: rgba(34, 38, 42, 1);
         color: rgba(237, 250, 255, 1);
         text-align: inherit;
@@ -41,7 +73,6 @@
         font-size: 14px;
         font-weight: bold;
         padding: 9px 12px;
-
     }
 
     #logo {
@@ -50,15 +81,18 @@
     }
 
     .circle {
+        display: flex;
+        align-items: center;
+        gap: 10px;
         height: 40px;
         width: 40px;
         background-color: white;
         border-radius: 50%;
         margin-right: 20px;
-
     }
 
-    .container, .coontainer {
+    .containerusers,
+    .coontainertools {
         display: flex;
         flex-wrap: wrap;
         width: 90%;
@@ -67,14 +101,9 @@
         border-radius: 4px;
         background-color: rgba(255, 255, 255, 1);
         position: relative;
-        top: 100px;
+        top: 10px;
         margin: 0 auto;
         box-shadow: 0 2px 6px 2px rgba(83, 94, 103, 0.35);
         display: flex;
-    }
-
-    .coontainer {
-
-        top: 200px;
     }
 </style>

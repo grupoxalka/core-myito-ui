@@ -1,62 +1,56 @@
-<header class="temp-header">
+<header class="aside-menu-header">
     <button class="menu-button">
         <img src="../assets/menu.svg" alt="menu" width="24" height="24">
     </button>
-    Tecnologico Nacional de Mexico
+    <div>
+        <img src="../assets/logo.svg" alt="logo" class="aside-menu-logo">
+        <h1>Tecnologico Nacional de Mexico</h1>
+    </div>
+
+    <button class="cancel-button">
+        <img src="../assets/cancel.svg" alt="x" width="24" height="24">
+    </button>
 </header>
-
 <aside class="aside-menu">
-    <header class="aside-menu-header">
-        <div>
-            <img src="../assets/logo.svg" alt="logo" class="aside-menu-logo">
-            <h1>Tecnologico Nacional de Mexico</h1>
-        </div>
-
-        <button class="cancel-button">
-            <img src="../assets/cancel.svg" alt="x" width="24" height="24">
-        </button>
-    </header>
-    <div class="aside-menu-content">
-        <ul>
-            <li class="tooltip active" data-tooltip="Tablero">
-                <a href="#">
-                    <div class="icon-bg">
-                        <img src="../assets/dashboard.svg" alt="dashboard">
-                    </div>
-                    <span>Tablero</span>
-                </a>
-            </li>
-            <li class="tooltip" data-tooltip="Gestión de Usuarios">
-                <a href="#">
-                    <div class="icon-bg">
-                        <img src="../assets/user.svg" alt="user">
-                    </div>
-                    <span>Gestor de usuarios</span>
-                </a>
-            </li>
-            <li class="tooltip" data-tooltip="Anuncios">
-                <a href="#">
-                    <div class="icon-bg">
-                        <img src="../assets/notification.svg" alt="notification">
-                    </div>
-                    <span>Anuncios</span>
-                </a>
-            </li>
-            <li class="tooltip" data-tooltip="Reportes">
-                <a href="#">
-                    <div class="icon-bg">
-                        <img src="../assets/data.svg" alt="data">
-                    </div>
-                    <span>Gestor de reportes</span>
-                </a>
-            </li>
-        </ul>
-        <div class="tooltip exit" data-tooltip="Cerrar Sesión">
+    <ul>
+        <li class="tooltip active" data-tooltip="Tablero">
             <a href="#">
-                <img src="../assets/exit.svg" alt="exit">
-                <span>Cerrar sesion</span>
+                <div class="icon-bg">
+                    <img src="../assets/dashboard.svg" alt="dashboard">
+                </div>
+                <span>Tablero</span>
             </a>
-        </div>
+        </li>
+        <li class="tooltip" data-tooltip="Gestión de Usuarios">
+            <a href="#">
+                <div class="icon-bg">
+                    <img src="../assets/user.svg" alt="user">
+                </div>
+                <span>Gestor de usuarios</span>
+            </a>
+        </li>
+        <li class="tooltip" data-tooltip="Anuncios">
+            <a href="#">
+                <div class="icon-bg">
+                    <img src="../assets/notification.svg" alt="notification">
+                </div>
+                <span>Anuncios</span>
+            </a>
+        </li>
+        <li class="tooltip" data-tooltip="Reportes">
+            <a href="#">
+                <div class="icon-bg">
+                    <img src="../assets/data.svg" alt="data">
+                </div>
+                <span>Gestor de reportes</span>
+            </a>
+        </li>
+    </ul>
+    <div class="tooltip exit" data-tooltip="Cerrar Sesión">
+        <a href="#">
+            <img src="../assets/exit.svg" alt="exit">
+            <span>Cerrar sesion</span>
+        </a>
     </div>
 </aside>
 
@@ -72,6 +66,7 @@
         font-family: "Poppins", sans-serif;
         flex-direction: column;
         background-color: blue;
+        overflow-x: hidden;
     }
 
     .temp-header {
@@ -89,10 +84,10 @@
     .aside-menu-header {
         background-color: #22262A;
         color: white;
-        display: flex;
         height: 58px;
         padding: 9px 12px;
-        justify-content: center;
+        display: flex;
+        justify-content: space-between;
         align-items: center;
         position: relative;
 
@@ -103,6 +98,7 @@
 
         h1 {
             font-size: 14px;
+            text-transform: uppercase;
         }
 
         div {
@@ -112,11 +108,6 @@
             width: 220px;
         }
 
-        .cancel-button {
-            position: absolute;
-            right: 12px;
-            padding: 0;
-        }
     }
 
     .cancel-button,
@@ -134,19 +125,18 @@
     .aside-menu {
         background-color: white;
         position: fixed;
-        top: 0;
+        top: 58px;
+        bottom: 0;
         width: 100%;
         text-transform: uppercase;
         transform: translateX(-100%);
         transition: transform 0.3s;
 
-        .aside-menu-content {
-            height: calc(100vh - 58px);
-            padding: 22px 0;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-        }
+        /* height: 100%; */
+        padding: 22px 0;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
 
         ul {
             display: flex;
@@ -220,10 +210,6 @@
                 padding: 8px 11px;
             }
         }
-
-        .aside-menu-header {
-            display: none;
-        }
     }
 
     /* ---Tooltip--- */
@@ -261,19 +247,21 @@
     const menuButton = document.querySelector(".menu-button");
     const cancelButton = document.querySelector(".cancel-button");
     const asideMenuItems = document.querySelectorAll(".aside-menu li");
+    const body = document.querySelector("body");
+    let isOpen = false;
 
     disableButton(cancelButton);
 
     menuButton.addEventListener("click", () => {
         asideMenu.classList.add("isOpen");
-        enableButton(cancelButton);
-        disableButton(menuButton);
+        isOpen = true;
+        update();
     });
 
     cancelButton.addEventListener("click", () => {
         asideMenu.classList.remove("isOpen");
-        enableButton(menuButton);
-        disableButton(cancelButton);
+        isOpen = false;
+        update();
     });
 
     asideMenuItems.forEach((item) => {
@@ -290,5 +278,20 @@
     function disableButton(button) {
         button.style.opacity = 0;
         button.style.cursor = "default";
+    }
+    function update() {
+        if (isOpen) {
+            enableButton(cancelButton);
+            disableButton(menuButton);
+            body.style.overflow = "hidden";
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        } else {
+            enableButton(menuButton);
+            disableButton(cancelButton);
+            body.style.overflow = "auto";
+        }
     }
 </script>

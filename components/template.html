@@ -7,16 +7,22 @@
             <img src="../assets/tecnm-logo.svg" id="logo">
             TECNOLÓGICO NACIONAL DE MÉXICO
         </div>
-
     </header>
-    <div class="users"></div>
-    <h1>USUARIOS EN EL SISTEMA </h1>
-    <p>POR SEMESTRE</p>
-    <div class="containerusers"></div>
-    <div class="users"></div>
-    <h1>HERRAMIENTAS RÁPIDAS</h1>
-    <p>ULTIMAS HERRAMIENTAS UTILIZADAS</p>
-    <div class="coontainertools"></div>
+
+    <div class="container"><div>
+
+        <div class="title">
+            <p class="users">USUARIOS EN EL SISTEMA</p>
+            <p class="semester">POR SEMESTRE</p>
+        </div>
+
+        <div class="subcontainer"></div>
+
+        <div class="tools-used">
+            <p class="fast">HERRAMIENTAS RÁPIDAS</p>
+            <P class="lates">ULTIMAS HERRAMIENTAS UTILIZADAS</P>
+        </div>
+    <div class="rectangle"></div>
     
 </body>
 
@@ -26,26 +32,88 @@
         margin: 0;
     }
 
-    .users {
-        display: flex;
+    .container {
+
         width: 100%;
-        align-self: stretch;
-        padding: 40px;
-    }
-
-    h1 {
+        height: 260px;
+        padding: 48px;
+        position: relative;
         
-        font-family: 'Poppins', sans-serif;
-        font-size: 24px;
-        font-style: normal;
-        padding-left:70px;
+
+        .title {
+            display: flex;
+            flex-direction: column;
+
+            .users{
+                font-family: 'Poppins', sans-serif;
+                font-size: 24px;
+                font-weight: bold;
+                gap: 4px;
+
+            }
+
+            .semester {
+                font-size: 16px;
+                font-weight: 300;
+                font-family: 'Roboto', sans-serif;
+                gap: 10px;
+            }
+        }
     }
 
-    p {
+    .subcontainer {
+        width: 100%;
+        height: 194px;
+        background-color: white;
+        box-shadow: 0 2px 6px 2px rgba(83, 94, 103, 0.35);
+        border-radius: 4px;
 
-        font-family: 'Roboto', sans-serif;
-        font-size: 14px;
-        padding-left:70px;
+        .tools-used {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            
+
+        .fast {
+            font-family: 'Poppins', sans-serif;
+            font-size: 24px;
+            font-weight: bold;
+            
+    }
+
+        }
+        
+    }
+    
+    .fast {
+            font-family: 'Poppins', sans-serif;
+            font-size: 24px;
+            font-weight: bold;
+            padding-top: 96px;
+          
+    }
+        
+        .lates {
+            font-size: 16px;
+                font-weight: 300;
+                font-family: 'Roboto', sans-serif;
+               
+               
+        }
+       
+    .rectangle {
+        position: absolute;
+        display: flex;
+        right: 0;
+       margin-right: 48px;
+       
+        width: 100%;
+        max-width: 50%;
+        height: 216px;
+        border-radius: 4px;
+        background-color: #ffffff;
+        box-shadow: 0 2px 6px 2px rgba(83, 94, 103, 0.35);
+        
     }
 
     .template-background {
@@ -91,19 +159,8 @@
         margin-right: 20px;
     }
 
-    .containerusers,
-    .coontainertools {
-        display: flex;
-        flex-wrap: wrap;
-        width: 90%;
-        height: 194px;
-        max-width: 1289px;
-        border-radius: 4px;
-        background-color: rgba(255, 255, 255, 1);
-        position: relative;
-        top: 10px;
-        margin: 0 auto;
-        box-shadow: 0 2px 6px 2px rgba(83, 94, 103, 0.35);
-        display: flex;
-    }
+    
+
+
+    
 </style>

@@ -49,7 +49,6 @@ body {
         gap: 24px;
         width: 220px;
     }
-
 }
 
 .cancel-button,
@@ -84,6 +83,8 @@ body {
         gap: 10px;
         list-style: none;
         padding: 0;
+        position: sticky;
+        top: 20px;
     }
 
     a {
@@ -94,6 +95,11 @@ body {
         align-items: center;
         padding: 8px 16px;
         gap: 10px;
+    }
+
+    .exit {
+        position: sticky;
+        bottom: 22px;
     }
 
     .icon-bg {
@@ -192,7 +198,6 @@ body {
     flex-direction: column;
     align-items: center;
     gap: 96px;
-
     background-image: url(../../assets/template-vector.svg);
     background-position: center;
     background-size: cover;
@@ -220,7 +225,6 @@ body {
     box-shadow: 0 2px 6px 2px rgba(83, 94, 103, 0.35);
     border-radius: 4px;
     padding: 24px 16px;
-
     display: flex;
     justify-content: center;
     align-items: center;
@@ -239,7 +243,6 @@ body {
     border-radius: 4px;
     background-color: #ffffff;
     box-shadow: 0 2px 6px 2px rgba(83, 94, 103, 0.35);
-
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -362,7 +365,6 @@ body {
         a {
             padding: 8px 11px;
         }
-
     }
 
     .main-content {
@@ -373,13 +375,10 @@ body {
         justify-content: left;
     }
 
-
-
     .container {
         padding-left: 96px;
         padding-right: 96px;
         flex-wrap: nowrap;
-
     }
 
     .owl-cards {

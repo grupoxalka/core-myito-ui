@@ -25,18 +25,22 @@
         <div class="right-side">
             <img src="../../assets/tecnm-logo.svg" id="tecnm-logo">
             <h1 class="upper-item-title">Inicia Sesión</h1>
-            <div class="input-container">
-                <input type="email" class="email" placeholder="Ingresa tu correo electrónico" required>
-                <input type="password" class="email" placeholder="Contraseña">
+            <form id="login-form">
+                <div class="input-container">
+                    <input type="email" class="email" placeholder="Ingresa tu correo electrónico" required>
+                    <input type="password" class="email" placeholder="Contraseña" required>
 
-                <input type="button" value="Inicia Sesión" id="button" class="button">
-            </div>
+                    <input type="submit" value="Inicia Sesión" id="button" class="button">
+                </div>
+            </form>
             <div class="lower-item">
                 <p class="lines"><span> ¿Olvidaste tu contraseña?</span></p>
                 <a href="../recoverypassword/recoverypassword.html">Solicitar recuperacion</a>
             </div>
         </div>
     </div>
+
+    <script src="login.js"></script>
 </body>
 
 </html>

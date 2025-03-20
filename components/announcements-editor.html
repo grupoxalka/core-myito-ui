@@ -1,0 +1,84 @@
+<div class="editor">
+    <div class="button-container">
+        <input type="button" value="Guardar" class="upper-button">
+    </div>
+    <section class="content">
+        <div class="item-container">
+            <img src="../assets/owl.svg" alt="Buho">
+            <div class="upper-text-container">
+                <h1>Crear nuevo anuncio</h1>
+                <p>Se llevará a cabo una campaña de comunicación a través de correo electrónico dirigida a todos los
+                    usuarios del tipo
+                    seleccionado</p>
+            </div>
+        </div>
+        <div class="audience-section">
+            <h2>Dirigido a:</h2>
+            <select name="audience" id="audience">
+                <option value="">Selecciona uno</option>
+                <option value="1">Profesores</option>
+                <option value="2">Alumnos</option>
+                <option value="3">Administrativos</option>
+            </select>
+        </div>
+        <div class="title-section">
+            <h2>Título</h2>
+            <input type="text" name="title" id="title" value="Ejemplo: Registro disponible">
+        </div>
+        <div class="message-section">
+            <h2>Mensaje</h2>
+            <p>Ejemplo: Estimados profesores, este correo tiene como objetivo solicitarles que suban las materias
+                correspondientes</p>
+            <textarea name="message" id="message">Escribe aqui</textarea>
+        </div>
+    </section>
+    <div class="button-container">
+        <input type="button" value="Cancelar">
+        <input type="submit" value="Enviar">
+    </div>
+</div>
+
+<style>
+    * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+    }
+
+    .button-container {
+        height: 76px;
+        padding: 20px;
+        background-color: #EDFAFF;
+        justify-content: center;
+        gap: 32px;
+    }
+
+    .content {
+        height: calc(100% - 152px);
+        display: flex;
+        flex-direction: column;
+        gap: 24px;
+        padding: 32px 48px;
+    }
+
+    .item-container {
+        display: flex;
+        gap: 48px;
+    }
+
+    .item-container img {
+        height: 100px;
+        width: 100px;
+        padding: 26px;
+        background-color: #EDFAFF;
+        border-radius: 50%;
+    }
+
+    #message,
+    #title,
+    #audience {
+        border-radius: 6px;
+        border: 1.5px solid rgba(181, 234, 255, 0.500);
+        background-color: #edfaff;
+    }
+</style>

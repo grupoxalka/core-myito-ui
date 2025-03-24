@@ -1,41 +1,43 @@
 <div class="editor">
-    <div class="button-container">
-        <input type="button" value="Guardar" class="upper-button">
-    </div>
-    <section class="content">
-        <div class="item-container">
-            <img src="../assets/owl.svg" alt="Buho">
-            <div class="upper-text-container">
-                <h1>Crear nuevo anuncio</h1>
-                <p>Se llevará a cabo una campaña de comunicación a través de correo electrónico dirigida a todos los
-                    usuarios del tipo
-                    seleccionado</p>
+    <form>
+        <div class="button-container">
+            <button type="button" class="upper-button"> Guardar </button>
+        </div>
+        <section class="content">
+            <div class="item-container">
+                <img src="../assets/owl.svg" alt="Buho">
+                <div class="upper-text-container">
+                    <h1>Crear nuevo anuncio</h1>
+                    <p>Se llevará a cabo una campaña de comunicación a través de correo electrónico dirigida a todos los
+                        usuarios del tipo
+                        seleccionado</p>
+                </div>
             </div>
+            <div class="audience-section">
+                <h2>Dirigido a:</h2>
+                <select name="audience" id="audience">
+                    <option value="">Selecciona uno</option>
+                    <option value="1">Profesores</option>
+                    <option value="2">Alumnos</option>
+                    <option value="3">Administrativos</option>
+                </select>
+            </div>
+            <div class="title-section">
+                <h2>Título</h2>
+                <input type="text" name="title" id="title" value="Ejemplo: Registro disponible">
+            </div>
+            <div class="message-section">
+                <h2>Mensaje</h2>
+                <p>Ejemplo: Estimados profesores, este correo tiene como objetivo solicitarles que suban las materias
+                    correspondientes</p>
+                <textarea name="message" id="message">Escribe aqui</textarea>
+            </div>
+        </section>
+        <div class="button-container">
+            <button type="button">Cancelar</button>
+            <button type="submit">Enviar</button>
         </div>
-        <div class="audience-section">
-            <h2>Dirigido a:</h2>
-            <select name="audience" id="audience">
-                <option value="">Selecciona uno</option>
-                <option value="1">Profesores</option>
-                <option value="2">Alumnos</option>
-                <option value="3">Administrativos</option>
-            </select>
-        </div>
-        <div class="title-section">
-            <h2>Título</h2>
-            <input type="text" name="title" id="title" value="Ejemplo: Registro disponible">
-        </div>
-        <div class="message-section">
-            <h2>Mensaje</h2>
-            <p>Ejemplo: Estimados profesores, este correo tiene como objetivo solicitarles que suban las materias
-                correspondientes</p>
-            <textarea name="message" id="message">Escribe aqui</textarea>
-        </div>
-    </section>
-    <div class="button-container">
-        <input type="button" value="Cancelar">
-        <input type="submit" value="Enviar">
-    </div>
+    </form>
 </div>
 
 <style>
@@ -63,6 +65,7 @@
 
     .item-container {
         display: flex;
+        align-items: center;
         gap: 48px;
     }
 

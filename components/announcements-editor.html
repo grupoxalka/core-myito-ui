@@ -1,7 +1,9 @@
 <div class="editor">
     <form>
         <div class="button-container">
-            <button type="button" class="upper-button"> Guardar </button>
+            <button type="button" class="upper-button">
+                <img src="..//assets/symbols-save.svg" alt="save">
+                <span>Guardar</span> </button>
         </div>
         <section class="content">
             <div class="item-container">
@@ -14,7 +16,7 @@
                 </div>
             </div>
             <div class="audience-section">
-                <h2>Dirigido a:</h2>
+                <h2 id="line">Dirigido a:</h2>
                 <select name="audience" id="audience">
                     <option value="">Selecciona uno</option>
                     <option value="1">Profesores</option>
@@ -33,26 +35,86 @@
                 <textarea name="message" id="message">Escribe aqui</textarea>
             </div>
         </section>
-        <div class="button-container">
-            <button type="button">Cancelar</button>
-            <button type="submit">Enviar</button>
+        <div class="button-group">
+            <button type="button" class="cancel-button">
+                <img src="..//assets/symbols-cancel.svg" alt="cancel">
+                <span>Cancelar</span> </button>
+            <button type="submit" class="submit-button">
+                <img src="..//assets/symbols-send.svg" alt="send">
+                <span>Enviar</span> </button>
         </div>
     </form>
 </div>
 
 <style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&family=Roboto:wght@200&display=swap');
+
     * {
         box-sizing: border-box;
         margin: 0;
         padding: 0;
     }
 
-    .button-container {
+    h1,
+    h2 {
+        font-family: Poppins;
+        font-weight: 400;
+        font-size: 18px;
+       /* gap: 24px;*/
+    }
+
+    h1 {
+        font-weight: 700;
+    }
+
+    p,
+    span {
+        font-family: Roboto;
+    }
+
+    span {
+        color: #EDFAFF;
+    }
+
+    img {
+        width: 18px;
+       /* height: auto;*/
+    }
+
+    .upper-text-container p {
+        font-size: 16px;
+        color: #22262A;
+        font-weight: 400;
+        font-family: Poppins;
+    }
+
+    .audience-section #line {
+        text-decoration-line: underline;
+        /*margin-bottom:auto;*/
+    }
+    .button-container{
         height: 76px;
         padding: 20px;
         background-color: #EDFAFF;
+        display: flex;
+        justify-content: flex-end;
+       /* gap: 1.66vw;*/
+    }
+
+    .button-container img {
+        width: 18px;
+        height: auto;
+        margin-left: 8px;
+    }
+
+    .upper-button {
+        background: #36c061;
+        width: 118px;
+        height: 36px;
         justify-content: center;
-        gap: 32px;
+        align-items: center;
+        display:flex;
     }
 
     .content {
@@ -62,7 +124,6 @@
         gap: 24px;
         padding: 32px 48px;
     }
-
     .item-container {
         display: flex;
         align-items: center;
@@ -80,8 +141,116 @@
     #message,
     #title,
     #audience {
+        display: flex;
         border-radius: 6px;
         border: 1.5px solid rgba(181, 234, 255, 0.500);
         background-color: #edfaff;
+        height: 36px;
+    }
+
+    #audience {
+        width: 300px;
+        text-align: center;
+    }
+
+    #audience option,
+    #message,
+    #title {
+        font-family: Roboto;
+        font-weight: 400;
+        font-size: 15px;
+        color: #0E315D
+    }
+
+    #title {
+        width: 100%;
+        max-width: 454px;
+        text-align: center;
+        /*margin-bottom: 24px;*/
+    }
+
+    #message {
+        width: 100%;
+        max-width: 454px;
+        height: 100%;
+    }
+
+    .message-section {
+        font-family: Poppins;
+        font-weight: 400;
+        font-size: 10px;   
+    }
+
+    .upper-text-container h1 {
+        font-size: 24px;
+        font-weight: 700;
+        color: #1A1A1A;
+    }
+
+    .button-group button{
+        height: 36px;
+    }
+    .button-group{
+        height: 76px;
+        padding: 20px;
+        background-color: #EDFAFF;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 32px;
+
+    }
+    .cancel-button {
+        width: 100%;
+        max-width: 119px;
+        background: #DA1E28;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .submit-button {
+        width: 100%;
+        max-width: 101px;
+        background: #0D519B;
+        gap: 24px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .submit-button,
+    .cancel-button,
+    .upper-button {
+        border-radius: 6px;
+        gap: 8px;
+        border: none; 
+    }
+    @media (max-width: 768px) {
+        .content{
+            padding: 16px;
+            height: auto;
+        }
+        .item-container {
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 16px;
+        }
+        .item-container img {
+            width: 80px;
+            height: 80px;
+        }   
+        #audience,
+        #title,
+        #message{
+            max-width: 100%;
+        }
+        form{
+            display:flex;
+            flex-direction: column;
+            height: 100%;
+        }
+        .content{
+            flex-grow: 1;
+        }
     }
 </style>

@@ -1,4 +1,10 @@
 <div class="editor">
+    <div class="sent-screen">
+        <button type="button" id="exit-button">X</button>
+        <img src="../assets/announcement-sent.svg" id="announcement-sent">
+        <h1 class="sent-title">Guardado y enviado con éxito</h1>
+        <button id="button" class="button">Crear nuevo</button>
+    </div>
     <form>
         <div class="button-container">
             <button type="button" class="upper-button">
@@ -35,11 +41,10 @@
                 <textarea name="message" id="message">Escribe aqui</textarea>
             </div>
         </section>
-        <div class="button-group">
-            <button type="button" class="cancel-button">
+v           <button type="button" class="cancel-button">
                 <img src="..//assets/symbols-cancel.svg" alt="cancel">
                 <span>Cancelar</span> </button>
-            <button type="submit" class="submit-button">
+            <button type="submit" id="submit" class="submit-button">
                 <img src="..//assets/symbols-send.svg" alt="send">
                 <span>Enviar</span> </button>
         </div>
@@ -253,4 +258,71 @@
             flex-grow: 1;
         }
     }
+
+    .sent-screen {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        justify-content: center;
+        align-items: center;
+        gap: 32px;
+        height: 100%;
+        width: 100%;
+        background-color: #FFF;
+    }
+
+    #exit-button {
+        position: absolute;
+        top: 32px;
+        left: 48px;
+    }
+
+    #announcement-sent {
+        width: 48px;
+        height: 48px;
+    }
+
+    .sent-title {
+        font-family: Poppins;
+        font-size: 28px;
+        line-height: 32px;
+        letter-spacing: -0.7px;
+        color: #303040;
+        margin: 0;
+    }
+
+    .button:hover {
+        background-color: #007AFF;
+        color: #EDFAFF;
+    }
+
+    .button:active {
+        background-color: #0E315D;
+    }
+
+    .button:disabled {
+        background-color: #B5EAFF;
+        color: #8789A9;
+    }
+
+    .button {
+        border: none;
+        width: 360px;
+        height: 36px;
+        background-color: #0D519B;
+        color: #ffffff;
+        padding: 8px 16px;
+        border-radius: 6px;
+        cursor: pointer;
+    }
 </style>
+
+<script>
+    const button = document.getElementById('submit');
+    const sentScreen = document.getElementsByClassName('sent-screen')[0]; // Accede al primer elemento
+
+    button.addEventListener('click', (event) => {
+        event.preventDefault(); // Evita el comportamiento por defecto del formulario
+        sentScreen.style.display = 'flex'; // Usa comillas para el valor 'flex'
+    });
+</script>

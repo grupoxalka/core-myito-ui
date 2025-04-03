@@ -1,0 +1,101 @@
+<div class="modal">
+    <img src="" alt="" id="modal-icon">
+    <p class="modal-text"></p>
+    <div class="button-container">
+        <button type="button" class="button" id="close-button"></button>
+        <button type="button" class="button" id="action-button"></button>
+    </div>
+</div>
+
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@700&family=Roboto:wght@200&display=swap');
+
+    .modal {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        border-radius: 4px;
+        gap: 32px;
+        padding: 48px 32px;
+        width: 90%;
+        max-width: 500px;
+        background-color: #ffffff;
+    }
+
+    .modal img {
+        height: 64px;
+        width: 64px;
+    }
+
+    .modal-text {
+        font-family: Poppins, sans-serif;
+        font-size: 28px;
+        margin: 0 -25px;
+        line-height: 32px;
+        letter-spacing: -2.5%;
+        font-weight: 700;
+        color: #303040;
+    }
+
+    .button-container {
+        display: flex;
+        justify-content: center;
+        gap: 16px;
+        width: 100%;
+        font-family: Roboto, sans-serif;
+        font-weight: 400;
+    }
+
+    .button {
+        border-radius: 6px;
+        padding: 8px 16px;
+        cursor: pointer;
+        border: none;
+        height: 36px;
+        width: 100%;
+        max-width: 210px;
+        color: #ffffff;
+        background-color: #5E6C76;
+    }
+
+    #action-button {
+        background-color: #F3404A;
+    }
+</style>
+
+<script>
+    const content = [{
+        id: 1,
+        icon: "../assets/trash.svg",
+        altIcon: "Bote de basura",
+        title: "Confirma que deseas eliminar este elemento",
+        actionButton: "Eliminar",
+        closeButton: "Cancelar",
+        actionBgColor: "#F3404A"
+
+    },
+    {
+        id: 2,
+        icon: "../assets/warning-icon.svg",
+        altIcon: "Advertencia",
+        title: "Estás a punto de salir sin haber guardado los cambios realizados ¿Deseas continuar?",
+        actionButton: "Volver",
+        closeButton: "Salir",
+        actionBgColor: "#0D519B"
+
+    }]
+
+    const icon = document.querySelector('#modal-icon');
+    const title = document.querySelector('.modal-text');
+    const closeButton = document.querySelector('#close-button')
+    const actionButton = document.querySelector('#action-button')
+
+    const selection = content[1];
+    icon.src = selection.icon;
+    icon.altIcon = selection.altIcon
+    title.textContent = selection.title;
+    closeButton.textContent = selection.closeButton;
+    actionButton.textContent = selection.actionButton;
+    actionButton.style.backgroundColor = selection.actionBgColor;
+</script>

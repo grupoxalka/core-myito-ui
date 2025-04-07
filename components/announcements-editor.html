@@ -1,3 +1,8 @@
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
 <div class="editor">
     <div class="sent-screen">
         <button type="button" id="exit-button">X</button>
@@ -6,7 +11,7 @@
         <button id="button" class="button">Crear nuevo</button>
     </div>
     <form>
-        <div class="button-container">
+        <div class="upper-container">
             <button type="button" class="upper-button">
                 <img src="..//assets/symbols-save.svg" alt="save">
                 <span>Guardar</span> </button>
@@ -41,7 +46,8 @@
                 <textarea name="message" id="message">Escribe aqui</textarea>
             </div>
         </section>
-v           <button type="button" class="cancel-button">
+        <div class="lower-container">
+            <button type="button" class="cancel-button">
                 <img src="..//assets/symbols-cancel.svg" alt="cancel">
                 <span>Cancelar</span> </button>
             <button type="submit" id="submit" class="submit-button">
@@ -66,7 +72,7 @@ v           <button type="button" class="cancel-button">
         font-family: Poppins;
         font-weight: 400;
         font-size: 18px;
-       /* gap: 24px;*/
+        /* gap: 24px;*/
     }
 
     h1 {
@@ -84,7 +90,6 @@ v           <button type="button" class="cancel-button">
 
     img {
         width: 18px;
-       /* height: auto;*/
     }
 
     .upper-text-container p {
@@ -96,21 +101,18 @@ v           <button type="button" class="cancel-button">
 
     .audience-section #line {
         text-decoration-line: underline;
-        /*margin-bottom:auto;*/
     }
-    .button-container{
+    .upper-container {
         height: 76px;
         padding: 20px;
         background-color: #EDFAFF;
         display: flex;
         justify-content: flex-end;
-       /* gap: 1.66vw;*/
+        gap: 32px;
     }
 
-    .button-container img {
+    .upper-container img {
         width: 18px;
-        height: auto;
-        margin-left: 8px;
     }
 
     .upper-button {
@@ -119,7 +121,7 @@ v           <button type="button" class="cancel-button">
         height: 36px;
         justify-content: center;
         align-items: center;
-        display:flex;
+        display: flex;
     }
 
     .content {
@@ -128,7 +130,9 @@ v           <button type="button" class="cancel-button">
         flex-direction: column;
         gap: 24px;
         padding: 32px 48px;
+        overflow-y: scroll;
     }
+
     .item-container {
         display: flex;
         align-items: center;
@@ -171,7 +175,6 @@ v           <button type="button" class="cancel-button">
         width: 100%;
         max-width: 454px;
         text-align: center;
-        /*margin-bottom: 24px;*/
     }
 
     #message {
@@ -183,7 +186,7 @@ v           <button type="button" class="cancel-button">
     .message-section {
         font-family: Poppins;
         font-weight: 400;
-        font-size: 10px;   
+        font-size: 10px;
     }
 
     .upper-text-container h1 {
@@ -192,10 +195,11 @@ v           <button type="button" class="cancel-button">
         color: #1A1A1A;
     }
 
-    .button-group button{
+    .lower-container button {
         height: 36px;
     }
-    .button-group{
+
+    .lower-container {
         height: 76px;
         padding: 20px;
         background-color: #EDFAFF;
@@ -205,6 +209,7 @@ v           <button type="button" class="cancel-button">
         gap: 32px;
 
     }
+
     .cancel-button {
         width: 100%;
         max-width: 119px;
@@ -213,6 +218,7 @@ v           <button type="button" class="cancel-button">
         justify-content: center;
         align-items: center;
     }
+
     .submit-button {
         width: 100%;
         max-width: 101px;
@@ -228,33 +234,38 @@ v           <button type="button" class="cancel-button">
     .upper-button {
         border-radius: 6px;
         gap: 8px;
-        border: none; 
+        border: none;
     }
+
     @media (max-width: 768px) {
-        .content{
+        .content {
             padding: 16px;
-            height: auto;
         }
+
         .item-container {
             flex-direction: column;
             align-items: flex-start;
             gap: 16px;
         }
+
         .item-container img {
             width: 80px;
             height: 80px;
-        }   
+        }
+
         #audience,
         #title,
-        #message{
+        #message {
             max-width: 100%;
         }
-        form{
-            display:flex;
+
+        form {
+            display: flex;
             flex-direction: column;
             height: 100%;
         }
-        .content{
+
+        .content {
             flex-grow: 1;
         }
     }
@@ -326,3 +337,5 @@ v           <button type="button" class="cancel-button">
         sentScreen.style.display = 'flex'; // Usa comillas para el valor 'flex'
     });
 </script>
+
+</html>

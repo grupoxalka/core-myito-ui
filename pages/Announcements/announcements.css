@@ -1,0 +1,130 @@
+*{
+    box-sizing: border-box;
+}
+
+body{
+    background-color: blue;
+    margin: 0;   
+}
+
+h1 {
+   color: #000;
+   font-family: 'Poppins', sans-serif;
+   font-size: 18px;
+   border-bottom: 1px solid var(--Nevada-600, #535E67);
+   padding: 10px 10px 24px 10px;
+   display: inline-block;
+   width: 100%;
+         
+
+}
+ 
+.Announcements {
+    border-collapse: collapse;
+    font-size: 1em;
+    font-family: 'Poppins', sans-serif;
+    min-width: 500px;
+    font-size: 12px;
+    font-weight: 400px;
+    line-height: normal;
+    text-transform: capitalize;
+    border-collapse: separate;
+    border-spacing: 0 11px; 
+}
+
+.Announcements thead tr {
+    background-color: rgba(214, 242, 255, 0.2);
+    font-family: 'Poppins', sans-serif;
+    font-size: 16px;  
+}
+
+.Announcements th, 
+.Announcements td {
+    padding: 12px 15px; 
+}
+
+.actions {
+    display: flex;
+    gap: 12px; 
+    justify-content: center;
+    padding: 0;
+}
+
+.actions img {
+    width: 20px;       
+    height: 20px;
+    margin: 0;         
+    padding: 0;
+    cursor: pointer;
+    display: block;   
+}
+
+.wrapper {
+    overflow-x: auto;
+}
+
+
+.pagination-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin: 24px 0;
+
+
+}
+
+  .pagination button {
+    color: var(--Azure-Radiance-900, #0D519B);
+    float: left;
+    height: 32px;
+    padding: 4px 8px;
+    text-decoration: none;
+    border: 0.5px solid var(--Nevada-50, #F4F6F7);
+    background-color: white;
+    
+  }
+  
+  .pagination button.active {
+    background-color: #007AFF;
+    color: white;
+    border: 1px solid #007AFF;
+  
+  }
+
+  .square {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 56px;
+    height: 56px;
+    border-radius: 8px;
+    border-radius: 8px;
+    border: 1px solid #E4E8E9;
+    box-shadow: 0px 1px 6px 0px var(--Nevada-300, #A7B2B9);
+    background-color: white;
+
+}         
+
+.main-container{
+    background-color: white;
+    border-radius: 4px;
+    margin: 64px 48px;
+    padding: 12px 15px;
+    position: relative;
+}
+table{
+    width: 100%;
+}
+td, th{
+    min-width: 139px;
+    max-width: 324px;
+    text-align: center;
+}
+
+@media (width > 1024px){
+    .square{
+        position: absolute;
+        right: 15px;
+        bottom: 12px;
+    }
+}

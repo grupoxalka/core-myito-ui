@@ -1,0 +1,342 @@
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<div class="editor">
+    <div class="sent-screen">
+        <button type="button" id="exit-button">X</button>
+        <img src="../assets/announcement-sent.svg" id="announcement-sent">
+        <h1 class="sent-title">Guardado y enviado con éxito</h1>
+        <button id="button" class="button">Crear nuevo</button>
+    </div>
+    <form>
+        <div class="upper-container">
+            <button type="button" class="upper-button">
+                <img src="..//assets/symbols-save.svg" alt="save">
+                <span>Guardar</span> </button>
+        </div>
+        <section class="content">
+            <div class="item-container">
+                <img src="../assets/owl.svg" alt="Buho">
+                <div class="upper-text-container">
+                    <h1>Crear nuevo anuncio</h1>
+                    <p>Se llevará a cabo una campaña de comunicación a través de correo electrónico dirigida a todos los
+                        usuarios del tipo
+                        seleccionado</p>
+                </div>
+            </div>
+            <div class="audience-section">
+                <h2 id="line">Dirigido a:</h2>
+                <select name="audience" id="audience">
+                    <option value="">Selecciona uno</option>
+                    <option value="1">Profesores</option>
+                    <option value="2">Alumnos</option>
+                    <option value="3">Administrativos</option>
+                </select>
+            </div>
+            <div class="title-section">
+                <h2>Título</h2>
+                <input type="text" name="title" id="title" value="Ejemplo: Registro disponible">
+            </div>
+            <div class="message-section">
+                <h2>Mensaje</h2>
+                <p>Ejemplo: Estimados profesores, este correo tiene como objetivo solicitarles que suban las materias
+                    correspondientes</p>
+                <textarea name="message" id="message">Escribe aqui</textarea>
+            </div>
+        </section>
+        <div class="lower-container">
+            <button type="button" class="cancel-button">
+                <img src="..//assets/symbols-cancel.svg" alt="cancel">
+                <span>Cancelar</span>
+            </button>
+            <button type="submit" id="submit" class="submit-button">
+                <img src="..//assets/symbols-send.svg" alt="send">
+                <span>Enviar</span> </button>
+        </div>
+    </form>
+</div>
+
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&family=Roboto:wght@200&display=swap');
+
+    * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+    }
+
+    h1,
+    h2 {
+        font-family: Poppins;
+        font-weight: 400;
+        font-size: 18px;
+        /* gap: 24px;*/
+    }
+
+    h1 {
+        font-weight: 700;
+    }
+
+    p,
+    span {
+        font-family: Roboto;
+    }
+
+    span {
+        color: #EDFAFF;
+    }
+
+    img {
+        width: 18px;
+    }
+
+    .upper-text-container p {
+        font-size: 16px;
+        color: #22262A;
+        font-weight: 400;
+        font-family: Poppins;
+    }
+
+    .audience-section #line {
+        text-decoration-line: underline;
+    }
+
+    .upper-container {
+        height: 76px;
+        padding: 20px;
+        background-color: #EDFAFF;
+        display: flex;
+        justify-content: flex-end;
+        gap: 32px;
+    }
+
+    .upper-container img {
+        width: 18px;
+    }
+
+    .upper-button {
+        background: #36c061;
+        width: 118px;
+        height: 36px;
+        justify-content: center;
+        align-items: center;
+        display: flex;
+    }
+
+    .content {
+        height: calc(100% - 152px);
+        display: flex;
+        flex-direction: column;
+        gap: 24px;
+        padding: 32px 48px;
+        overflow-y: scroll;
+    }
+
+    .item-container {
+        display: flex;
+        align-items: center;
+        gap: 48px;
+    }
+
+    .item-container img {
+        height: 100px;
+        width: 100px;
+        padding: 26px;
+        background-color: #EDFAFF;
+        border-radius: 50%;
+    }
+
+    #message,
+    #title,
+    #audience {
+        display: flex;
+        border-radius: 6px;
+        border: 1.5px solid rgba(181, 234, 255, 0.500);
+        background-color: #edfaff;
+        height: 36px;
+    }
+
+    #audience {
+        width: 300px;
+        text-align: center;
+    }
+
+    #audience option,
+    #message,
+    #title {
+        font-family: Roboto;
+        font-weight: 400;
+        font-size: 15px;
+        color: #0E315D
+    }
+
+    #title {
+        width: 100%;
+        max-width: 454px;
+        text-align: center;
+    }
+
+    #message {
+        width: 100%;
+        max-width: 454px;
+        height: 100%;
+    }
+
+    .message-section {
+        font-family: Poppins;
+        font-weight: 400;
+        font-size: 10px;
+    }
+
+    .upper-text-container h1 {
+        font-size: 24px;
+        font-weight: 700;
+        color: #1A1A1A;
+    }
+
+    .lower-container button {
+        height: 36px;
+    }
+
+    .lower-container {
+        height: 76px;
+        padding: 20px;
+        background-color: #EDFAFF;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 32px;
+
+    }
+
+    .cancel-button {
+        width: 100%;
+        max-width: 119px;
+        background: #DA1E28;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .submit-button {
+        width: 100%;
+        max-width: 101px;
+        background: #0D519B;
+        gap: 24px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .submit-button,
+    .cancel-button,
+    .upper-button {
+        border-radius: 6px;
+        gap: 8px;
+        border: none;
+    }
+
+    @media (max-width: 768px) {
+        .content {
+            padding: 16px;
+        }
+
+        .item-container {
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 16px;
+        }
+
+        .item-container img {
+            width: 80px;
+            height: 80px;
+        }
+
+        #audience,
+        #title,
+        #message {
+            max-width: 100%;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+        }
+
+        .content {
+            flex-grow: 1;
+        }
+    }
+
+    .sent-screen {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        justify-content: center;
+        align-items: center;
+        gap: 32px;
+        height: 100%;
+        width: 100%;
+        background-color: #FFF;
+    }
+
+    #exit-button {
+        position: absolute;
+        top: 32px;
+        left: 48px;
+    }
+
+    #announcement-sent {
+        width: 48px;
+        height: 48px;
+    }
+
+    .sent-title {
+        font-family: Poppins;
+        font-size: 28px;
+        line-height: 32px;
+        letter-spacing: -0.7px;
+        color: #303040;
+        margin: 0;
+    }
+
+    .button:hover {
+        background-color: #007AFF;
+        color: #EDFAFF;
+    }
+
+    .button:active {
+        background-color: #0E315D;
+    }
+
+    .button:disabled {
+        background-color: #B5EAFF;
+        color: #8789A9;
+    }
+
+    .button {
+        border: none;
+        width: 360px;
+        height: 36px;
+        background-color: #0D519B;
+        color: #ffffff;
+        padding: 8px 16px;
+        border-radius: 6px;
+        cursor: pointer;
+    }
+</style>
+
+<script>
+    const button = document.getElementById('submit');
+    const sentScreen = document.getElementsByClassName('sent-screen')[0]; // Accede al primer elemento
+
+    button.addEventListener('click', (event) => {
+        event.preventDefault(); // Evita el comportamiento por defecto del formulario
+        sentScreen.style.display = 'flex'; // Usa comillas para el valor 'flex'
+    });
+</script>
+
+</html>

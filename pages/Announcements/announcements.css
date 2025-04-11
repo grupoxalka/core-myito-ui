@@ -289,6 +289,27 @@ body {
   width: 100%;
 }
 
+.logo-link {
+  display: flex;
+}
+
+.not-found {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.not-found img {
+  width: 48px;
+  width: 48px;
+}
+
+.not-found h3 {
+  margin-top: 11px;
+  font-size: 28px;
+  color: #303040;
+}
 /*---------------------------------------------------------------------------------------------------------------*/
 /* ---------------------------------------------Announcements--------------------------------------------------- */
 /*---------------------------------------------------------------------------------------------------------------*/
@@ -404,7 +425,6 @@ body {
   border-radius: 4px;
   margin: 64px 48px;
   padding: 12px 15px;
-  position: relative;
   width: 100%;
 }
 table {
@@ -418,12 +438,12 @@ th {
 }
 
 @media (width > 1024px) {
-  .square {
-    position: absolute;
-    right: 15px;
-    bottom: 12px;
+  .add-button-container {
+    display: flex;
+    justify-content: end;
   }
 }
+
 /*---------------------------------------------------------------------------------------------------------------*/
 /* ----------------------------------------------------Editor--------------------------------------------------- */
 /*---------------------------------------------------------------------------------------------------------------*/
@@ -469,7 +489,7 @@ th {
   font-family: Poppins;
   font-weight: 400;
   font-size: 18px;
-  gap: 24px;
+  margin-bottom: 10px;
 }
 
 .editor h1 {
@@ -520,6 +540,18 @@ th {
   justify-content: center;
   align-items: center;
   display: flex;
+}
+
+.upper-button:disabled {
+  background-color: #b7ffcd;
+  cursor: not-allowed;
+  span {
+    color: #8789a9;
+  }
+  img {
+    filter: brightness(0) saturate(100%) invert(61%) sepia(2%) saturate(4709%)
+      hue-rotate(199deg) brightness(91%) contrast(68%);
+  }
 }
 
 .content {
@@ -588,6 +620,10 @@ th {
   font-size: 10px;
 }
 
+.message-section p {
+  margin-bottom: 48px;
+}
+
 .upper-text-container h1 {
   font-size: 24px;
   font-weight: 700;
@@ -625,6 +661,18 @@ th {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.submit-button:disabled {
+  background-color: #b5eaff;
+  cursor: not-allowed;
+  img {
+    filter: brightness(0) saturate(100%) invert(61%) sepia(2%) saturate(4709%)
+      hue-rotate(199deg) brightness(91%) contrast(68%);
+  }
+  span {
+    color: #8789a9;
+  }
 }
 
 .submit-button,
@@ -677,6 +725,7 @@ form {
   height: 100%;
   width: 100%;
   background-color: #fff;
+  z-index: 1;
 }
 
 #exit-button {

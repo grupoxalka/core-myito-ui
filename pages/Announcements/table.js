@@ -24,6 +24,10 @@ const nextButton = document.querySelector('.next');
 const prevButton = document.querySelector('.prev');
 const contenedorBotones = document.querySelector('.pagination');
 
+const tableContainer = document.querySelector('.table-container');
+const paginationContainer = document.querySelector('.pagination-container');
+
+
 let currentPage = 1;
 let isEditing = false;
 let editingID = null;
@@ -33,6 +37,10 @@ const MAX_ROWS = 5;
 formulario.addEventListener('submit', (e) => submitAnuncio(e, "ENVIADO"));
 saveButton.addEventListener('click', (e) => submitAnuncio(e, "BORRADOR"));
 
+audienciaInput.addEventListener('input', toggleFormButtons);
+tituloInput.addEventListener('input', toggleFormButtons);
+mensajeInput.addEventListener('input', toggleFormButtons);
+
 openButton.addEventListener('click', openForm);
 cancelButton.addEventListener('click', cancelForm);
 exitButton.addEventListener('click', cancelForm);
@@ -41,6 +49,7 @@ nextButton.addEventListener('click', () => updateCurrentPage("next"));
 prevButton.addEventListener('click', () => updateCurrentPage("prev"));
 
 createButton.addEventListener('click', () => sentScreen.style.display = 'none');
+editorBackdrop.addEventListener('click', cancelForm);
 
 document.addEventListener("DOMContentLoaded", () => {
     ui.display();
@@ -54,11 +63,11 @@ class Notificacion {
         this.dialog = document.querySelector('#dialog');
         this.icon = document.querySelector('#modal-icon');
         this.title = document.querySelector('.modal-text');
-        this.closeButton = document.querySelector('#close-button')
-        this.actionButton = document.querySelector('#action-button')
+        this.leftButton = document.querySelector('#close-button')
+        this.rightButton = document.querySelector('#action-button')
         this.mensaje = mensaje;
 
-        let selection
+        let selection;
         if (mensaje === "eliminar") selection = this.content[0];
         else if (mensaje === "cancelar") selection = this.content[1];
         else {
@@ -69,9 +78,24 @@ class Notificacion {
         this.icon.src = selection.icon;
         this.icon.altIcon = selection.altIcon
         this.title.textContent = selection.title;
-        this.closeButton.textContent = selection.closeButton;
-        this.actionButton.textContent = selection.actionButton;
-        this.actionButton.style.backgroundColor = selection.actionBgColor;
+        this.leftButton.textContent = selection.leftButton;
+        this.rightButton.textContent = selection.rightButton;
+        this.rightButton.style.backgroundColor = selection.actionBgColor;
+
+        if (selection.actionButton === 'right') {
+            this.rightButton.classList.add('trigger-modal-action');
+            this.leftButton.classList.add('close-modal-action');
+
+            this.rightButton.classList.remove('close-modal-action');
+            this.leftButton.classList.remove('trigger-modal-action');
+        }
+        else if (selection.actionButton === 'left') {
+            this.rightButton.classList.add('close-modal-action');
+            this.leftButton.classList.add('trigger-modal-action');
+
+            this.rightButton.classList.remove('trigger-modal-action');
+            this.leftButton.classList.remove('close-modal-action');
+        }
     }
 
     content = [{
@@ -79,9 +103,10 @@ class Notificacion {
         icon: "../../assets/trash.svg",
         altIcon: "Bote de basura",
         title: "Confirma que deseas eliminar este elemento",
-        actionButton: "Eliminar",
-        closeButton: "Cancelar",
-        actionBgColor: "#F3404A"
+        rightButton: "Eliminar",
+        leftButton: "Cancelar",
+        actionBgColor: "#F3404A",
+        actionButton: 'right'
 
     },
     {
@@ -89,9 +114,10 @@ class Notificacion {
         icon: "../../assets/warning-icon.svg",
         altIcon: "Advertencia",
         title: "Estás a punto de salir sin haber guardado los cambios realizados ¿Deseas continuar?",
-        actionButton: "Volver",
-        closeButton: "Salir",
-        actionBgColor: "#0D519B"
+        rightButton: "Volver",
+        leftButton: "Salir",
+        actionBgColor: "#0D519B",
+        actionButton: 'left'
 
     }]
 
@@ -99,17 +125,18 @@ class Notificacion {
         return new Promise((resolve) => {
             this.dialog.showModal();
 
-            this.actionButton.onclick = () => {
+            const actionButton = document.querySelector('.trigger-modal-action');
+            const closeButton = document.querySelector('.close-modal-action');
+
+            actionButton.addEventListener('click', () => {
                 this.dialog.close();
                 resolve(true);
-            };
-
-            this.closeButton.onclick = () => {
+            });
+            closeButton.addEventListener('click', () => {
                 this.dialog.close();
                 resolve(false);
-            };
+            });
 
-            // Cerrar al hacer clic fuera del modal
             this.dialog.addEventListener('click', (e) => {
                 const rect = this.dialog.getBoundingClientRect();
                 const isInDialog =
@@ -145,15 +172,12 @@ class Anuncios {
     }
     create(anuncio) {
         this.anuncios.push(anuncio);
-        console.log(this.anuncios);
     }
     edit(newAnuncio) {
         this.anuncios = this.anuncios.map(anuncio => anuncio.id === newAnuncio.id ? newAnuncio : anuncio);
-        console.log(this.anuncios);
     }
     delete(id) {
         this.anuncios = this.anuncios.filter(anuncio => anuncio.id !== id);
-        console.log(this.anuncios);
     }
     length() {
         return this.anuncios.length;
@@ -176,6 +200,7 @@ class UI {
         const tr = document.createElement('tr');
         const { metadata } = anuncio;
 
+        const borrador = "BORRADOR";
         const titulo = document.createElement('td');
         const autor = document.createElement('td');
         const fecha = document.createElement('td');
@@ -193,7 +218,7 @@ class UI {
         tr.appendChild(estatus);
         tr.appendChild(acciones);
 
-        if (metadata.estatus === "BORRADOR") {
+        if (borrador === metadata.estatus) {
             const editar = document.createElement('button');
             const elimimar = document.createElement('button');
 
@@ -203,7 +228,7 @@ class UI {
             editar.innerHTML = `<img src="../../assets/edit.svg" alt="edit">`;
             elimimar.innerHTML = `<img src="../../assets/delete.svg" alt="delete">`;
 
-            editar.onclick = () => { editarAnuncio(anuncio); };
+            editar.onclick = () => { editAnuncio(anuncio); };
             elimimar.onclick = () => { eliminarAnuncio(anuncio); };
 
             acciones.classList.add('actions');
@@ -215,10 +240,16 @@ class UI {
     }
 
     updatePagination() {
+
+
         const rows = tbody.getElementsByTagName('tr').length;
         const buttons = document.querySelectorAll('.pagination button');
         const totalButtons = buttons.length;
         const totalAnuncios = anuncios.length();
+
+        totalAnuncios <= MAX_ROWS ?
+            paginationContainer.style.display = 'none' :
+            paginationContainer.style.display = 'flex';
 
         //Agregar botones
         if (totalAnuncios > (totalButtons * MAX_ROWS) && rows <= MAX_ROWS) {
@@ -255,6 +286,11 @@ class UI {
     display() {
         this.updateTable();
         this.updatePagination();
+
+        const notFound = document.querySelector(".not-found");
+        anuncios.length() > 0 ?
+            notFound.style.display = 'none' :
+            notFound.style.display = 'flex';
     }
 
 }
@@ -273,7 +309,7 @@ function submitAnuncio(e, estatus) {
         ui.display();
         new Notificacion("exito");
     } else {
-        anuncio = new Anuncio(generarID(), estatus);
+        anuncio = new Anuncio(generateID(), estatus);
         anuncios.create(anuncio);
         ui.display();
         new Notificacion("exito");
@@ -282,6 +318,7 @@ function submitAnuncio(e, estatus) {
     isEditing = false;
     editingID = null;
     formulario.reset();
+    toggleFormButtons();
 }
 
 function updateCurrentPage(action) {
@@ -295,23 +332,21 @@ function updateCurrentPage(action) {
 }
 
 async function eliminarAnuncio(anuncio) {
-    const confirmacion = await new Notificacion("eliminar").showModal();
+    const confirmation = await new Notificacion("eliminar").showModal();
 
-    if (confirmacion) {
+    if (confirmation) {
         anuncios.delete(anuncio.id);
+
         // Actualizar la página actual si se elimina el último elemento
         currentPage = anuncios.length() % MAX_ROWS === 0 ? Math.max(currentPage - 1, 1) : currentPage;
 
         ui.display();
         isEditing = false;
         editingID = null;
-        console.log(confirmacion);
-    } else {
-        console.log("Eliminación cancelada");
     }
 }
 
-function editarAnuncio(anuncio) {
+function editAnuncio(anuncio) {
     isEditing = true;
     editingID = anuncio.id;
 
@@ -322,6 +357,7 @@ function editarAnuncio(anuncio) {
 }
 
 function openForm() {
+    toggleFormButtons();
     editorBackdrop.classList.add("open");
     editor.classList.add("open-editor");
     sentScreen.style.display = 'none';
@@ -330,22 +366,21 @@ function openForm() {
         top: 0,
         behavior: 'smooth'
     });
-    // body.style.overflow = "hidden";
 }
 
 async function cancelForm() {
-    if (!isEditing) {
+
+    const isEmpty = audienciaInput.value.trim() === "" && tituloInput.value.trim() === "" && mensajeInput.value.trim() === "";
+    if (isEmpty) {
         editorBackdrop.classList.remove("open");
         editor.classList.remove("open-editor");
         formulario.reset();
         return;
     }
 
-    const confirmacion = await new Notificacion("cancelar").showModal();
+    const confirmation = await new Notificacion("cancelar").showModal();
 
-    if (confirmacion) {
-        console.log("cancelacion cancelada");
-    } else {
+    if (confirmation) {
         editorBackdrop.classList.remove("open");
         editor.classList.remove("open-editor");
         formulario.reset();
@@ -353,6 +388,15 @@ async function cancelForm() {
 
 }
 
-function generarID() {
+function toggleFormButtons() {
+    const isValid = audienciaInput.value.trim() !== "" &&
+        tituloInput.value.trim() !== "" &&
+        mensajeInput.value.trim() !== "";
+
+    saveButton.disabled = !isValid;
+    submitButton.disabled = !isValid;
+}
+
+function generateID() {
     return Date.now().toString();
 }

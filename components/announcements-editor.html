@@ -1,4 +1,5 @@
 <html>
+
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
@@ -27,7 +28,7 @@
             </div>
             <div class="audience-section">
                 <h2 id="line">Dirigido a:</h2>
-                <select name="audience" id="audience">
+                <select name="audience" id="audience" required>
                     <option value="">Selecciona uno</option>
                     <option value="1">Profesores</option>
                     <option value="2">Alumnos</option>
@@ -36,13 +37,13 @@
             </div>
             <div class="title-section">
                 <h2>Título</h2>
-                <input type="text" name="title" id="title" value="Ejemplo: Registro disponible">
+                <input type="text" name="title" id="title" value="Ejemplo: Registro disponible" required maxlength="72">
             </div>
             <div class="message-section">
                 <h2>Mensaje</h2>
                 <p>Ejemplo: Estimados profesores, este correo tiene como objetivo solicitarles que suban las materias
                     correspondientes</p>
-                <textarea name="message" id="message">Escribe aqui</textarea>
+                <textarea name="message" id="message" required maxlength="300">Escribe aqui</textarea>
             </div>
         </section>
         <div class="lower-container">

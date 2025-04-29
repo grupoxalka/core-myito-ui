@@ -78,7 +78,7 @@
                 <img src="../assets/symbols-cancel.svg" alt="cancel">
                 <span>Cancelar</span>
             </button>
-            <button type="submit" class="button button--submit">
+            <button type="submit" class="button button--submit" id="submit">
                 <img src="../assets/symbols-send.svg" alt="send">
                 <span>Enviar</span>
             </button>
@@ -294,7 +294,8 @@
     }
 
     /* == Component: Label == */
-    .form-label {
+    .form-label,
+    input::placeholder {
         display: flex;
         flex-direction: column;
         font-weight: 400;
@@ -323,13 +324,14 @@
         }
 
         .input--data {
-            min-width: 220px;
+            min-width: 215px;
         }
 
         .form-section__data {
             flex-direction: row;
             align-items: last baseline;
             flex-wrap: wrap;
+            gap: 24px;
         }
     }
 </style>

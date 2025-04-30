@@ -3,19 +3,19 @@ const user = "JUANITO";
 const date = new Date(Date.now()).toISOString().split('T')[0];
 
 const header = document.querySelector('header');
-const formulario = document.querySelector('#formulario');
+const formulario = document.querySelector('.form');
 
-const tipoUsuarioInput = document.querySelector('#usuario');
-const nombreInput = document.querySelector('#nombre');
-const apellidoPaternoInput = document.querySelector('#paterno');
-const apellidoMaternoInput = document.querySelector('#materno');
-const correoInput = document.querySelector('#correo');
-const celularInput = document.querySelector('#celular');
-const notasInput = document.querySelector('#notas');
+const tipoUsuarioInput = document.querySelector('#audience');
+const nombreInput = document.querySelector('#first-name-input');
+const apellidoPaternoInput = document.querySelector('#first-lastname-input');
+const apellidoMaternoInput = document.querySelector('#second-lastname-input');
+const correoInput = document.querySelector('#email-input');
+const celularInput = document.querySelector('#phone-input');
+const notasInput = document.querySelector('#message');
 
-const submitButton = document.querySelector('#submit');
+const submitButton = document.querySelector('.button--submit');
 const openButton = document.querySelector('#add-user-button');
-const cancelButton = document.querySelector('.cancel-button');
+const cancelButton = document.querySelector('.button--cancel');
 
 const editor = document.querySelector('.editor');
 const editorBackdrop = document.querySelector('.editor-backdrop');

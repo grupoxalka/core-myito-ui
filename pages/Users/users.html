@@ -244,62 +244,83 @@
 
     <div class="editor-backdrop"> </div>
     <div class="editor">
-        <div class="sent-screen">
-            <button type="button" id="exit-button">x</button>
-            <img src="../../assets/announcement-sent.svg" id="announcement-sent">
-            <h1 class="sent-title">Guardado y enviado con éxito</h1>
-            <button id="create-new" class="button">Crear nuevo</button>
-        </div>
-        <form id="formulario">
-            <div class="upper-container">
 
-            </div>
+        <div class="sent-screen">
+            <button type="button" id="exit-button">
+                <img src="../../assets/closing-cross.svg" alt="Cerrar">
+            </button>
+            <img src="../../assets/announcement-sent.svg" class="sent-screen__image">
+            <h1 class="sent-screen__title">Guardado<br>con éxito</h1>
+            <button class="button button--primary" id="create-new">Crear nuevo</button>
+        </div>
+
+        <form class="form">
+
             <section class="content">
-                <div class="item-container">
-                    <img src="../../assets/owl.svg" alt="Buho">
-                    <div class="upper-text-container">
-                        <h1>Crear nuevo Usuario</h1>
+                <div class="item">
+                    <img src="../../assets/owl.svg" alt="Buho" class="item__image">
+                    <div class="item__text">
+                        <h1 class="item__title">Crear Nuevo Usuario</h1>
                     </div>
                 </div>
-                <div class="audience-section">
-                    <h2 id="line">Dirigido a:</h2>
-                    <select name="audience" id="usuario" required>
+
+                <div class="form-section">
+                    <h2 class="form-section__title underline">Tipos De Usuario</h2>
+                    <select name="audience" id="audience" class="input input--select" required>
                         <option value="">Default</option>
-                        <option value="Profesores">Profesores</option>
-                        <option value="Alumnos">Alumnos</option>
-                        <option value="Administrativos">Administrativos</option>
+                        <option value="1">Profesor</option>
+                        <option value="2">Alumno</option>
+                        <option value="3">Administrativo</option>
                     </select>
                 </div>
-                <div class="title-section">
-                    <h2>Nombre completo</h2>
-                    <label for="">nombre</label>
-                    <input type="text" name="title" id="nombre" required> <br>
-                    <label for="">apellido Paterno</label>
-                    <input type="text" name="title" id="paterno" required><br>
-                    <label for="">apellido Materno</label>
-                    <input type="text" name="title" id="materno" required>
+
+                <div class="form-section">
+                    <h2 class="form-section__title">Nombre Completo</h2>
+                    <div class="form-section__data">
+                        <label class="form-label" for="first-name-input"> Nombre(s) *
+                            <input type="text" name="first-name-input" id="first-name-input" class="input input--data"
+                                placeholder="Ejemplo: Eduardo Ángel" required>
+                        </label>
+                        <label class="form-label" for="first-lastname-input"> Apellido Paterno *
+                            <input type="text" name="first-lastname-input" id="first-lastname-input"
+                                class="input input--data" placeholder="Ejemplo: Gonzales" required>
+                        </label>
+                        <label class="form-label" for="second-lastname-input"> Apellido Materno
+                            <input type="text" name="second-lastname-input" id="second-lastname-input"
+                                class="input input--data" placeholder="Ejemplo: Perez">
+                        </label>
+                    </div>
                 </div>
-                <div class="title-section">
-                    <h2>Contacto</h2>
-                    <label for="">Correo</label>
-                    <input type="text" name="title" id="correo" required><br>
-                    <label for="">Celular</label>
-                    <input type="text" name="title" id="celular" required>
+
+                <div class="form-section">
+                    <h2 class="form-section__title">Información De Contacto</h2>
+                    <div class="form-section__data">
+                        <label class="form-label" for="email-input"> Correo Electrónico *
+                            <input type="email" name="email-input" id="email-input" class="input input--data"
+                                placeholder="Ejemplo: nombre@correo.com" required>
+                        </label>
+                        <label class="form-label" for="phone-input"> Número De Celular
+                            <input type="tel" name="phone-input" id="phone-input" class="input input--data"
+                                placeholder="Ejemplo: 272 222 22 22">
+                        </label>
+                    </div>
                 </div>
-                <div class="message-section">
-                    <h2>Notas</h2>
-                    <p>Ejemplo: Estimados profesores, este correo tiene como objetivo solicitarles que suban las
-                        materias
-                        correspondientes</p>
-                    <textarea name="message" id="notas" placeholder="Escribe aqui"></textarea>
+
+                <div class="form-section">
+                    <h2 class="form-section__title">Notas</h2>
+                    <p class="form-section__description">Notas o comentarios sobre este usuario “Ejemplo: pendiente
+                        actualización de número de contacto”</p>
+                    <textarea name="message" id="message" class="input input--textarea" maxlength="300"
+                        placeholder="Escribe aquí"></textarea>
                 </div>
             </section>
-            <div class="lower-container">
-                <button type="button" class="cancel-button">
+
+            <div class="form-lower">
+                <button type="button" class="button button--cancel">
                     <img src="../../assets/symbols-cancel.svg" alt="cancel">
                     <span>Cancelar</span>
                 </button>
-                <button type="submit" id="submit" class="submit-button">
+                <button type="submit" class="button button--submit" id="submit">
                     <img src="../../assets/symbols-send.svg" alt="send">
                     <span>Enviar</span>
                 </button>

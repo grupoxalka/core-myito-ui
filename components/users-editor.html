@@ -1,0 +1,348 @@
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<div class="editor">
+
+    <div class="sent-screen">
+        <button type="button" id="exit-button">
+            <img src="../../assets/closing-cross.svg" alt="Cerrar">
+        </button>
+        <img src="../assets/announcement-sent.svg" class="sent-screen__image">
+        <h1 class="sent-screen__title">Guardado<br>con éxito</h1>
+        <button class="button button--primary">Crear nuevo</button>
+    </div>
+
+    <form class="form">
+
+        <section class="content">
+            <div class="item">
+                <img src="../assets/owl.svg" alt="Buho" class="item__image">
+                <div class="item__text">
+                    <h1 class="item__title">Crear Nuevo Usuario</h1>
+                </div>
+            </div>
+
+            <div class="form-section">
+                <h2 class="form-section__title underline">Tipos De Usuario</h2>
+                <select name="audience" id="audience" class="input input--select" required>
+                    <option value="">Default</option>
+                    <option value="1">Profesor</option>
+                    <option value="2">Alumno</option>
+                    <option value="3">Administrativo</option>
+                </select>
+            </div>
+
+            <div class="form-section">
+                <h2 class="form-section__title">Nombre Completo</h2>
+                <div class="form-section__data">
+                    <label class="form-label" for="first-name-input"> Nombre(s) *
+                        <input type="text" name="first-name-input" id="first-name-input" class="input input--data"
+                            placeholder="Ejemplo: Eduardo Ángel" required>
+                    </label>
+                    <label class="form-label" for="first-lastname-input"> Apellido Paterno *
+                        <input type="text" name="first-lastname-input" id="first-lastname-input"
+                            class="input input--data" placeholder="Ejemplo: Gonzales" required>
+                    </label>
+                    <label class="form-label" for="second-lastname-input"> Apellido Materno
+                        <input type="text" name="second-lastname-input" id="second-lastname-input"
+                            class="input input--data" placeholder="Ejemplo: Perez">
+                    </label>
+                </div>
+            </div>
+
+            <div class="form-section">
+                <h2 class="form-section__title">Información De Contacto</h2>
+                <div class="form-section__data">
+                    <label class="form-label" for="email-input"> Correo Electrónico *
+                        <input type="email" name="email-input" id="email-input" class="input input--data"
+                            placeholder="Ejemplo: nombre@correo.com" required>
+                    </label>
+                    <label class="form-label" for="phone-input"> Número De Celular
+                        <input type="tel" name="phone-input" id="phone-input" class="input input--data"
+                            placeholder="Ejemplo: 272 222 22 22">
+                    </label>
+                </div>
+            </div>
+
+            <div class="form-section">
+                <h2 class="form-section__title">Notas</h2>
+                <p class="form-section__description">Notas o comentarios sobre este usuario “Ejemplo: pendiente
+                    actualización de número de contacto”</p>
+                <textarea name="message" id="message" class="input input--textarea" maxlength="300"
+                    placeholder="Escribe aquí"></textarea>
+            </div>
+        </section>
+
+        <div class="form-lower">
+            <button type="button" class="button button--cancel">
+                <img src="../assets/symbols-cancel.svg" alt="cancel">
+                <span>Cancelar</span>
+            </button>
+            <button type="submit" class="button button--submit" id="submit">
+                <img src="../assets/symbols-send.svg" alt="send">
+                <span>Enviar</span>
+            </button>
+        </div>
+    </form>
+</div>
+
+<!-- ========== CSS ========== -->
+<style>
+    /* == Global == */
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&family=Roboto:wght@200&display=swap');
+
+    * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+    }
+
+    h1,
+    h2 {
+        font-family: Poppins;
+        font-weight: 400;
+        font-size: 18px;
+    }
+
+    h1 {
+        font-weight: 700;
+    }
+
+    p,
+    span,
+    label {
+        font-family: Roboto;
+    }
+
+    span {
+        color: #EDFAFF;
+    }
+
+    img {
+        width: 18px;
+    }
+
+    #exit-button {
+        position: absolute;
+        top: 32px;
+        left: 48px;
+        background: white;
+        border: none;
+        font-size: 24px;
+        cursor: pointer;
+    }
+
+    /* ========== COMPONENT: Button ========== */
+    .button {
+        border: none;
+        height: 36px;
+        padding: 8px 16px;
+        border-radius: 6px;
+        cursor: pointer;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 8px;
+    }
+
+    .button--primary {
+        width: 360px;
+        background-color: #0D519B;
+        color: #ffffff;
+    }
+
+    .button--primary:hover {
+        background-color: #007AFF;
+        color: #EDFAFF;
+    }
+
+    .button--primary:active {
+        background-color: #0E315D;
+    }
+
+    .button--primary:disabled {
+        background-color: #B5EAFF;
+        color: #8789A9;
+    }
+
+    .button--save {
+        width: 118px;
+        background: #36c061;
+    }
+
+    .button--cancel {
+        width: 119px;
+        background: #DA1E28;
+    }
+
+    .button--submit {
+        width: 101px;
+        background: #0D519B;
+    }
+
+    /* ========== COMPONENT: SentScreen ========== */
+    .sent-screen {
+        display: none;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        position: absolute;
+        height: 100%;
+        width: 100%;
+        background-color: #FFF;
+        gap: 32px;
+    }
+
+    .sent-screen__exit-button {
+        position: absolute;
+        top: 32px;
+        left: 48px;
+    }
+
+    .sent-screen__image {
+        width: 48px;
+        height: 48px;
+    }
+
+    .sent-screen__title {
+        font-family: Poppins;
+        font-size: 28px;
+        line-height: 32px;
+        letter-spacing: -0.7px;
+        color: #303040;
+        margin: 0;
+    }
+
+    /* == Component: Content == */
+    .content {
+        height: calc(100% - 76px);
+        display: flex;
+        flex-direction: column;
+        gap: 24px;
+        padding: 32px 48px;
+        overflow-y: scroll;
+    }
+
+    /* == Component: Item == */
+    .item {
+        display: flex;
+        align-items: center;
+        gap: 48px;
+    }
+
+    .item__image {
+        height: 100px;
+        width: 100px;
+        padding: 26px;
+        background-color: #EDFAFF;
+        border-radius: 50%;
+    }
+
+    .item__text p {
+        font-size: 16px;
+        color: #22262A;
+        font-weight: 400;
+        font-family: Poppins;
+    }
+
+    .item__title {
+        font-size: 24px;
+        font-weight: 700;
+        color: #1A1A1A;
+    }
+
+    /* == Component: Form Section == */
+    .form-section,
+    .form-section__data {
+        display: flex;
+        flex-direction: column;
+        gap: 30px;
+    }
+
+    .form-section__description {
+        font-family: Roboto;
+        font-size: 14px;
+        color: #22262A;
+    }
+
+    .form-s .underline {
+        text-decoration: underline;
+    }
+
+    /* == Component: Input == */
+    .input {
+        display: flex;
+        border-radius: 6px;
+        border: 1.5px solid rgba(181, 234, 255, 0.5);
+        background-color: #edfaff;
+        height: 36px;
+        width: 100%;
+        text-align: center;
+        font-family: Roboto;
+        font-weight: 400;
+        font-size: 15px;
+        color: #0E315D;
+    }
+
+    .input--textarea {
+        height: 100%;
+        min-height: 100px;
+        resize: vertical;
+        text-align: left;
+        padding: 8px;
+    }
+
+    /* == Component: Label == */
+    .form-label,
+    input::placeholder {
+        display: flex;
+        flex-direction: column;
+        font-weight: 400;
+        font-size: 15px;
+        line-height: 20px;
+        letter-spacing: -0.5%;
+        color: #0E315D;
+        font-family: Roboto;
+    }
+
+    /* ========== COMPONENT: FormLower ========== */
+    .form-lower {
+        height: 76px;
+        width: 100%;
+        padding: 20px;
+        background-color: #EDFAFF;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 32px;
+    }
+
+    @media (width > 360px) {
+        .input--select {
+            max-width: 300px;
+        }
+
+        .input--data {
+            min-width: 215px;
+        }
+
+        .form-section__data {
+            flex-direction: row;
+            align-items: last baseline;
+            flex-wrap: wrap;
+            gap: 24px;
+        }
+    }
+</style>
+
+<script>
+    const button = document.querySelector('.button--submit');
+    const sentScreen = document.querySelector('.sent-screen');
+
+    button.addEventListener('click', (event) => {
+        event.preventDefault();
+        sentScreen.style.display = 'flex';
+    });
+</script>

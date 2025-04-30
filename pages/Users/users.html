@@ -4,8 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Announcements</title>
-    <link rel="stylesheet" href="announcements.css">
+    <title>Users</title>
+    <link rel="stylesheet" href="users.css">
     <link rel="icon" href="../../assets/logo.svg">
 
 </head>
@@ -47,16 +47,16 @@
                         <span>Tablero</span>
                     </a>
                 </li>
-                <li class="tooltip" data-tooltip="Gestión de Usuarios">
-                    <a href="../Users/users.html">
+                <li class="tooltip active" data-tooltip="Gestión de Usuarios">
+                    <a href="#">
                         <div class="icon-bg">
                             <img src="../../assets/user.svg" alt="user">
                         </div>
                         <span>Gestor de usuarios</span>
                     </a>
                 </li>
-                <li class="tooltip active" data-tooltip="Anuncios">
-                    <a href="#">
+                <li class="tooltip" data-tooltip="Anuncios">
+                    <a href="../Announcements/announcements.html">
                         <div class="icon-bg">
                             <img src="../../assets/notification.svg" alt="notification">
                         </div>
@@ -80,16 +80,104 @@
             </div>
         </nav>
         <main class="main-content">
-            <div class="table-container">
-                <h1>ANUNCIOS</h1>
+
+            <div class="search-user">
+                <h2>BUSCADOR DE USUARIOS</h2>
+                <img src="../../assets/owl.svg" alt="owl">
+                <p>
+                    Encuentra a un usuario por su <span>numero de control</span> ó <span>nombre completo</span>
+                </p>
+                <div class="search-user__input-container">
+                    <input type="text" placeholder="user ID ó Full_Name" class="search-user__input"
+                        id="search-users-input">
+                    <img src="../../assets/symbols_search.svg" alt="Search" class="search-user__icon">
+                </div>
+                <div class="table-container" id="search-results">
+                    <h1>Usuarios</h1>
+                    <div class="wrapper">
+                        <table class="users-table" id="search-results-table">
+                            <thead>
+                                <tr>
+                                    <th>NOMBRE</th>
+                                    <th>TIPO DE USUARIO</th>
+                                    <th>FECHA DE CREACION</th>
+                                    <th>CORREO ELECTRONICO</th>
+                                    <th>NOTAS</th>
+                                    <th>ACCIONES</th>
+                                </tr>
+                            </thead>
+
+                            <tbody>
+                                <tr>
+                                    <td>Juan Justo Juarez</td>
+                                    <td>Alumno</td>
+                                    <td>19/02/2024</td>
+                                    <td>correo@correo</td>
+                                    <td>Debe la inscripcion</td>
+                                    <td class="actions">
+                                        <button class="edit">
+                                            <img src="../../assets/edit.svg" alt="edit">
+                                        </button>
+                                        <button class="delete">
+                                            <img src="../../assets/delete.svg" alt="delete">
+                                        </button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Carla Camila Castro</td>
+                                    <td>Alumno</td>
+                                    <td>19/02/2024</td>
+                                    <td>correo@correo</td>
+                                    <td>Debe la inscripcion</td>
+                                    <td class="actions">
+                                        <button class="edit">
+                                            <img src="../../assets/edit.svg" alt="edit">
+                                        </button>
+                                        <button class="delete">
+                                            <img src="../../assets/delete.svg" alt="delete">
+                                        </button>
+                                    </td>
+                                </tr>
+
+
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="not-found">
+                        <img src="../../assets/not-found.svg" alt="not-found">
+                        <h3>No se encontraron Usuarios</h3>
+                    </div>
+
+                    <div class="pagination-container">
+                        <button class="prev">&laquo;</button>
+                        <div class="pagination">
+                            <button class="active">1</button>
+                        </div>
+                        <button class="next">&raquo;</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="add-user">
+                <h2>GESTIÓN DE USUARIOS</h2>
+                <div class="add-user__container">
+                    <button class="add-user__card" id="add-user-button">
+                        <div class="add-user__img-container"><img src="../../assets/add-user.svg" alt="user"></div>
+                        Añadir nuevo usuario
+                    </button>
+                </div>
+            </div>
+            <div class="table-container" id="users-table">
+                <h1>ULTIMOS USUARIOS AGREGADOS</h1>
                 <div class="wrapper">
-                    <table class="Announcements">
+                    <table class="users-table">
                         <thead>
                             <tr>
-                                <th>TÍTULO</th>
-                                <th>CREADO POR</th>
-                                <th>FECHA DE ENVIO</th>
-                                <th>ESTATUS</th>
+                                <th>NOMBRE</th>
+                                <th>TIPO DE USUARIO</th>
+                                <th>FECHA DE CREACION</th>
+                                <th>CORREO ELECTRONICO</th>
+                                <th>NOTAS</th>
                                 <th>ACCIONES</th>
                             </tr>
                         </thead>
@@ -140,7 +228,7 @@
                 </div>
                 <div class="not-found">
                     <img src="../../assets/not-found.svg" alt="not-found">
-                    <h3>No se encontraron Anuncios <br> Crea uno nuevo</h3>
+                    <h3>No se encontraron Usuarios <br> Crea uno nuevo</h3>
                 </div>
 
                 <div class="pagination-container">
@@ -149,11 +237,6 @@
                         <button class="active">1</button>
                     </div>
                     <button class="next">&raquo;</button>
-                </div>
-                <div class="add-button-container">
-                    <button class="square">
-                        <img src="../../assets/add-notice.svg" alt="add">
-                    </button>
                 </div>
             </div>
         </main>
@@ -169,41 +252,46 @@
         </div>
         <form id="formulario">
             <div class="upper-container">
-                <button type="button" class="upper-button">
-                    <img src="../../assets/symbols-save.svg" alt="save">
-                    <span>Guardar</span> </button>
+
             </div>
             <section class="content">
                 <div class="item-container">
                     <img src="../../assets/owl.svg" alt="Buho">
                     <div class="upper-text-container">
-                        <h1>Crear nuevo anuncio</h1>
-                        <p>Se llevará a cabo una campaña de comunicación a través de correo electrónico dirigida a
-                            todos
-                            los
-                            usuarios del tipo
-                            seleccionado</p>
+                        <h1>Crear nuevo Usuario</h1>
                     </div>
                 </div>
                 <div class="audience-section">
                     <h2 id="line">Dirigido a:</h2>
-                    <select name="audience" id="audience" required>
-                        <option value="">Selecciona uno</option>
-                        <option value="1">Profesores</option>
-                        <option value="2">Alumnos</option>
-                        <option value="3">Administrativos</option>
+                    <select name="audience" id="usuario" required>
+                        <option value="">Default</option>
+                        <option value="Profesores">Profesores</option>
+                        <option value="Alumnos">Alumnos</option>
+                        <option value="Administrativos">Administrativos</option>
                     </select>
                 </div>
                 <div class="title-section">
-                    <h2>Título</h2>
-                    <input type="text" name="title" id="title" placeholder="Ejemplo: Registro disponible" required>
+                    <h2>Nombre completo</h2>
+                    <label for="">nombre</label>
+                    <input type="text" name="title" id="nombre" required> <br>
+                    <label for="">apellido Paterno</label>
+                    <input type="text" name="title" id="paterno" required><br>
+                    <label for="">apellido Materno</label>
+                    <input type="text" name="title" id="materno" required>
+                </div>
+                <div class="title-section">
+                    <h2>Contacto</h2>
+                    <label for="">Correo</label>
+                    <input type="text" name="title" id="correo" required><br>
+                    <label for="">Celular</label>
+                    <input type="text" name="title" id="celular" required>
                 </div>
                 <div class="message-section">
-                    <h2>Mensaje</h2>
+                    <h2>Notas</h2>
                     <p>Ejemplo: Estimados profesores, este correo tiene como objetivo solicitarles que suban las
                         materias
                         correspondientes</p>
-                    <textarea name="message" id="message" placeholder="Escribe aqui" required></textarea>
+                    <textarea name="message" id="notas" placeholder="Escribe aqui"></textarea>
                 </div>
             </section>
             <div class="lower-container">
@@ -219,7 +307,7 @@
         </form>
     </div>
 
-    <script src="announcements.js"></script>
+    <script src="users.js"></script>
     <script src="table.js"></script>
 
 </body>
